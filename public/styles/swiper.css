@@ -1,0 +1,59 @@
+.swiper-container {
+    /*       border: 0.05px solid red; */
+    width: 90vw;
+    height: 70vh;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    margin: 10px auto;
+}
+
+
+/* individual div with images */
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 450px;
+    height: 450px;
+}
+
+/* STYLE INDIVIDUAL ARROWS */
+
+.myArrow {
+    color: red;
+}
+
+/* STYLE IMG DIRECTLY */
+/* MAKE IMG FIT TO BOX, GIVE IMAGE A REFLECTION */
+
+.swiper-container img {
+    width: 100%;
+    max-width: 450px;
+
+    -webkit-box-reflect: below 0.05px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(255, 255, 255, 0.3)));
+
+}
+
+
+
+
+/* BREAK POINT 500 PX OR LESS */
+@media screen and (max-width: 500px) {
+    /*   CONATINER */
+    .swiper-container {
+        height: 75vh;
+        padding: 0;
+    }
+
+    /* DIV HOLDING IMG */
+    .swiper-slide {
+        width: 400px;
+        height: 400px;
+    }
+
+    /*   MAKE IMG FIT IN BREAK POINT */
+    .swiper-container img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+}

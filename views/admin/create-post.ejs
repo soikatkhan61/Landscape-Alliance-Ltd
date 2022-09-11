@@ -1,0 +1,121 @@
+<%- include("./partials/header") %> 
+
+<%- include("./partials/sidebar") %> 
+
+<div class="container">
+      <div class="row d-flex" style="flex-direction: column;">
+        <h1 class="text-center mt-4">Create Project</h1>
+        <hr>
+
+        <form method="post" action="/admin/create-post<%= project? '?edit=true&id='+project.id : '' %>" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Post Title</label>
+            <input required maxlength="250" type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp"
+              placeholder="( Max lenght 250 character )" value="<%= project ? project.title : '' %>"  >
+          </div>
+          <textarea id="summernote" name="description"><%= project ? project.description : '' %> </textarea>
+
+
+          <div class="form-group">
+            <label for="thumbnail">Project Thumbnail</label>
+            <input <% project? '' : 'thumbnail' %>  id="thumbnail" class="form-control" type="file" name="thumbnail">
+            <% if(project && project.thumbnail){ %>
+              <div class="card">
+                <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= project.thumbnail %>"  alt="Card image cap">
+              </div>`
+            <% } %> 
+          </div>
+          
+
+          
+          <div class="form-group">
+            <label for="project-images">Project Images</label>
+            <input id="project-images" type="file" class="form-control" name="project-images" multiple>
+            <div id="gallery-preview" class="card-deck" style="display: flex;">
+              <% if(project){ %>
+                <% projectImages.forEach(img => { %>
+                  <div class="card">
+                    <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
+                  </div>`
+                <% }) %> 
+              <% } %> 
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input maxlength="50" type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.address : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="apartment_size">Apartment Size</label>
+            <input maxlength="50" type="text" class="form-control" id="apartment_size" name="apartment_size" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.apartment_size : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="road_size">Road Size</label>
+            <input maxlength="50" type="text" class="form-control" id="road_size" name="road_size" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.road_size : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="parking">Parking</label>
+            <input maxlength="50" type="text" class="form-control" id="parking" name="parking" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.parking : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="land_size">Land Size</label>
+            <input maxlength="50" type="text" class="form-control" id="land_size" name="land_size" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.land_size : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="units">Units</label>
+            <input maxlength="50" type="text" class="form-control" id="units" name="units" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.units : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="floors">Floors</label>
+            <input maxlength="50" type="text" class="form-control" id="floors" name="floors" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.floors : '' %>"  >
+          </div>
+          <div class="form-group">
+            <label for="handover_time">Handover Time</label>
+            <input maxlength="50" type="text" class="form-control" id="handover_time" name="handover_time" aria-describedby="emailHelp"
+              placeholder="( Max lenght 50 character )" value="<%= project ? project.handover_time : '' %>"  >
+          </div>
+
+       
+          <input type="submit" value=<%= project? "Update": "Publish" %> class="form-control btn-primary" />
+
+        </form>
+</div>
+</div>
+
+
+<script>
+  const projectImagesInput = document.getElementById('project-images');
+  const gelleryPreview = document.getElementById('gallery-preview');
+
+  projectImagesInput.addEventListener('change', async (e)=>{
+    
+    const files = e.target.files;
+    console.log(files)
+
+    let src = '';
+    let cardElements = '';
+    for(file of files){
+      src = URL.createObjectURL(file);
+      cardElements += ` <div class="card">
+              <img style="width:200px; height: 200px;" class="card-img-top" src="${src}" alt="Card image cap">
+            </div>`
+
+      gelleryPreview.innerHTML = cardElements;
+      gelleryPreview.onload = function(){
+        URL.revokeObjectURL(src);
+      }
+    }
+  })
+
+</script>
+
+
+<%- include("./partials/footer") %>
