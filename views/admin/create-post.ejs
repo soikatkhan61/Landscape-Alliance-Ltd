@@ -3,17 +3,41 @@
 <%- include("./partials/sidebar") %> 
 
 <div class="container">
-      <div class="row d-flex" style="flex-direction: column;">
+      <div class="row d-flex mb-5" style="flex-direction: column;">
         <h1 class="text-center mt-4">Create Project</h1>
         <hr>
 
-        <form method="post" action="/admin/create-post<%= project? '?edit=true&id='+project.id : '' %>" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="title">Post Title</label>
+        <form method="post" action="/admin/create-post<%= project ? '?edit=true&id='+project.id : '' %>" enctype="multipart/form-data">
+
+          <label for="title">Post Title</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class='bx bxs-captions'></i></div>
+            </div>
             <input required maxlength="250" type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp"
               placeholder="( Max lenght 250 character )" value="<%= project ? project.title : '' %>"  >
           </div>
-          <textarea id="summernote" name="description"><%= project ? project.description : '' %> </textarea>
+          <div class="mb-2">
+            <script>
+                function update() {
+                    var d = document.getElementById('country');
+                    var dText = d.options[d.selectedIndex].text;
+                    document.getElementById('result').value = dText
+                }
+            </script>
+            <select id="country" class="py-2 px-4 mb-3" onchange="update();"
+                style="width: 100%; outline: black">
+                <option class="py-2 px-5">Project Status</option>
+                <option class="py-2 px-5" value="Ongoing" <%= project && project.status == 'Ongoing' ? 'selected' : '' %> >Ongoing</option>
+                <option class="py-2 px-5" value="Completed" <%= project &&  project.status == 'Completed' ? 'selected' : '' %>>Completed</option>
+                <option class="py-2 px-5" value="Upcoming" <%= project &&  project.status == 'Upcoming' ? 'selected' : '' %>>Upcoming</option>
+            </select>
+            <input id="result" name="status" value="" class="d-none" >
+
+        </div>
+          <div class="mb-3">
+            <textarea id="summernote" name="description"><%= project ? project.description : '' %> </textarea>
+          </div>
 
 
           <div class="form-group">
@@ -28,20 +52,23 @@
           
 
           
-          <div class="form-group">
-            <label for="project-images">Project Images</label>
-            <input id="project-images" type="file" class="form-control" name="project-images" multiple>
-            <div id="gallery-preview" class="card-deck" style="display: flex;">
-              <% if(project){ %>
-                <% projectImages.forEach(img => { %>
-                  <div class="card">
-                    <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
-                  </div>`
-                <% }) %> 
-              <% } %> 
-            </div>
+      
+          <label for="google_map">Google Map</label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class='bx bxs-map text-success'></i></div>
+              </div>
+            <input maxlength="1000" type="text" class="form-control" id="google_map" name="google_map" aria-describedby="emailHelp"
+              placeholder="Google map link" value="<%= project ? project.google_map : '' %>"  >
           </div>
-
+          <label for="youtube_video">Youtube Video Link</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class='bx bxl-youtube text-danger' ></i></div>
+            </div>
+          <input maxlength="1000" type="text" class="form-control" id="youtube_video" name="youtube_video" aria-describedby="emailHelp"
+            placeholder="Youtube video link" value="<%= project ? project.youtube_video : '' %>"  >
+        </div>
           <div class="form-group">
             <label for="address">Address</label>
             <input maxlength="50" type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp"
@@ -81,6 +108,21 @@
             <label for="handover_time">Handover Time</label>
             <input maxlength="50" type="text" class="form-control" id="handover_time" name="handover_time" aria-describedby="emailHelp"
               placeholder="( Max lenght 50 character )" value="<%= project ? project.handover_time : '' %>"  >
+          </div>
+
+          <div class="form-group">
+            <label for="project-images">Project Images</label>
+            <input id="project-images" type="file" class="form-control" name="project-images" multiple>
+
+            <div id="gallery-preview" class="card-deck mt-3" style="display: flex;">
+              <% if(project){ %>
+                <% projectImages.forEach(img => { %>
+                  <div class="card">
+                    <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
+                  </div>`
+                <% }) %> 
+              <% } %> 
+            </div>
           </div>
 
        

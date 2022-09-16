@@ -1,5 +1,5 @@
 .ribbon {
-    height: 188px;
+    height: 100px;
     position: relative;
     margin-bottom: 30px;
     background-size: cover;
@@ -38,3 +38,11 @@
     border-bottom: 25px solid transparent;
     border-left: 15px solid #149279;
   }
+
+  :root {
+    --blue: #2584EE;
+    --dark-blue: #134D8D;
+    --secondary: #2277D6;
+  }
+  
+  

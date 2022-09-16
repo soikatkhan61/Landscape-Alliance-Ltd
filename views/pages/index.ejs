@@ -1,23 +1,28 @@
 <%- include('../partials/head.ejs') %>
-  <div class="container-fluid py-3">
+  <div class="container-fluid">
 
 
     <div class="swiper-container">
+      <style>
+        .swiper-wrapper img{
+          max-height: 400px;
+        }
+      </style>
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="https://picsum.photos/500/500?random=1">
+          <img src="/images/com1.jpg">
         </div>
         <div class="swiper-slide">
-          <img src="https://picsum.photos/500/500?random=2">
+          <img src="/images/com5.jpg">
         </div>
         <div class="swiper-slide">
-          <img src="https://picsum.photos/500/500?random=3">
+          <img src="/images/com4.jpg">
         </div>
         <div class="swiper-slide">
-          <img src="https://picsum.photos/500/500?random=4">
+          <img src="/images/com3.jpg">
         </div>
         <div class="swiper-slide">
-          <img src="https://picsum.photos/500/500?random=5">
+          <img src="/images/com2.jpg">
         </div>
         
      
@@ -119,23 +124,6 @@
     </div>
   </div>
 
-  <div class="container-fluid" style="background-color: white;">
-    <div class="container py-5">
-      <div class="row">
-        <div class="wow fadeInLeft col-md-6 my-2 d-flex justify-content-center">
-          <img src="/images/com1.jpg" height="400" alt="">
-        </div>
-        <div class="wow fadeInRight col-md-6 my-2 d-flex flex-column justify-content-center" data-wow-delay="0.5s">
-          <img src="/images/logo.png" height="100" alt="">
-          <h3 class="text-dark fw-bold mt-5">For Buying and Selling Property</h3>
-          <p>You can sell, buy or exchange your used <br> apartment/commercial space with <br> new properties!</p>
-
-          <button class="c_btn py-2 px-5 mt-3">Learn More</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
 
   <div class="py-5 bg-dark">
     <h1 class="text-light text-center">WHY LANDSCAPAE?</h1>
@@ -256,7 +244,7 @@
       </div>
     </div>
   </div>
-
+</div>
   <script src='https://unpkg.com/swiper/swiper-bundle.js'></script>
   <script>
     const inputs = document.querySelectorAll(".input");
