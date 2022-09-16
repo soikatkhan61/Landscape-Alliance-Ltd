@@ -1,0 +1,73 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="container-fluid" style="min-height:80vh">
+    <div class="container py-4">
+        <div class="shadow-sm bg-light p-5">
+            <form action="/order" method="post">
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <input type="text" name="name" id="form4Example1" class="form-control <%= error.name ? 'is-invalid' : '' %>" value="<%= values.name ? values.name : '' %>" required/>
+                  <label class="form-label" for="form4Example1">Name</label>
+                  <div class="invalid-feedback">
+                    <%= error.name %>
+                  </div>
+                </div>
+              
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" name="email"  id="form4Example2" class="form-control <%= error.email ? 'is-invalid' : '' %>"  value="<%= values.email ? values.email : ''%>" required/>
+                  <label class="form-label" for="form4Example2">Email address</label>
+                  <div class="invalid-feedback">
+                    <%= error.email %>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" minlength="11" minlength="15" class="form-control <%= error.phone ? 'is-invalid' : '' %>" name="phone" value="<%= values.phone ? values.phone : ''%>"  id="f" required>
+                  <label class="form-label" for="f">Phone</label>
+                  <div class="invalid-feedback">
+                    <%= error.phone %>
+                  </div>
+                </div>
+                
+                <script>
+                    function update() {
+                        var d = document.getElementById('country');
+                        var dText = d.options[d.selectedIndex].text;
+                        document.getElementById('result').value = dText
+                    }
+                </script>
+                
+                  <select id="country" class="py-2 px-4 w-100" onchange="update();">
+                    <option class="py-2 px-5" value="none">Select Project</option>
+                    <option class="bg-danger" style="height: 30px;" value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                    <option value="6">Six</option>
+                    <option value="7">Seven</option>
+                    <option value="8">Eight</option>
+                </select>
+                <input id="result" name="project_name" class="d-none">
+               
+                <p class="text-danger "><%= error.project_name ? error.project_name : ''%> </p>
+                
+                
+
+                <div class="form-outline mb-4">
+                    <input class="form-control" value="<%= values.aria_pref ? values.aria_pref : ''%>" name="area_pref"  id="ds" required>
+                    <label class="form-label"  for="ds">aria_pref</label>
+                  </div>
+              
+              
+                
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+              </form>
+        </div>
+       
+    </div>
+</div>
+<%- include("../partials/footer") %>

@@ -1,0 +1,44 @@
+
+.wow { visibility: hidden; }
+
+.bg-gray {
+    background-color: #eee!important;
+}
+
+.c_btn{
+    background-color: #149279!important;
+    color: white!important;
+    border-radius: 0;
+    border: 1px solid #149279;
+}
+
+.c_btn:hover{
+    background-color: white!important;
+    color: #149279!important;
+    border: 1px solid #149279;
+    transition: 0.5s;
+}
+.pc{
+    color: #149279;
+}
+
+.pc_light{
+    background-color: #57B9A6!important;
+    color: white!important;
+    border: 1px solid #149279;
+}
+
+.c_btn_outline{
+    background-color: white;
+    border: 1px solid #149279;
+}
+
+.c_btn_outline:hover{
+    background-color: #149279;
+    transition: 0.5s;
+    color: white;
+    border: 1px solid #149279;
+}
+
+
+
