@@ -24,43 +24,72 @@
         .custom_navbar ul li a{
           font-size: 18px!important;
         }
-        .custom_navbar ul li a:hover{
-          color: #149279 !important;
-          font-weight: bold;
-          transition: 0.5s;
-        }
-        .c_active{
-          background-color: #149279!important;
-          color:white!important;
-          border: 1px solid #149279;
-        }
-        .c_active:hover{
-          background-color: white!important;
-          color:#149279!important;
-          border: 1px solid #149279;
-        }
       </style>
       <!-- Collapsible wrapper -->
       <div class="collapse custom_navbar navbar-collapse" id="navbarButtonsExample">
         <!-- Left links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              About
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="/about/profile">Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/about/vision">Vision</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/about/mission">Mission</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/about/promices">Promises</a>
+              </li>
+            </ul>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Creations
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="/profile">Ongoing</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Completed</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Upcoming</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About Us</a>
+            <a class="nav-link" href="#">Laisons</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/order">Order</a>
+            <a class="nav-link" href="/admin">admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">News & Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Career</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-5 c_active" href="#">Contact</a>
+            <a class="nav-link px-5 border" href="#">Contact</a>
           </li>
         </ul>
         <!-- Left links -->

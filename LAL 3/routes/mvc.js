@@ -1,6 +1,6 @@
 const router = require("express").Router()
 
-const {homePageGetController,aboutPageGetController} = require("../controllers/myController")
+const {homePageGetController,aboutPageGetController} = require("../controllers/homeController")
 
 router.get("/home",homePageGetController)
 router.get("/about",aboutPageGetController)

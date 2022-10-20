@@ -18,6 +18,12 @@
     background: #149279;
     z-index: 1;
   }
+  .ribonred{
+    background: #e90c1f;
+  }
+  .ribonupcoming{
+    background: #eec925;
+  }
   .ribbon3:before, .ribbon3:after {
     content: "";
     position: absolute;
@@ -37,6 +43,12 @@
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent;
     border-left: 15px solid #149279;
+  }
+  .ribonred:after{
+    border-left: 15px solid #e90c1f;
+  }
+  .ribonupcoming:after{
+    border-left: 15px solid #eec925;
   }
 
   :root {

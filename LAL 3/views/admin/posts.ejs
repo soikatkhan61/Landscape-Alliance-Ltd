@@ -5,14 +5,30 @@
 <%- include("./partials/sidebar") %>
 
 <div class="container">
+  <h3 class="text-center py-3">All Projects</h3>
   <div class="main-content" style="padding-left: 5%; padding-right: 5%;">
+    <div class="my-3 d-flex justify-content-between">
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Project Type
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="/admin/all-posts?status=Ongoing">Ongoing</a>
+          <a class="dropdown-item" href="/admin/all-posts?status=Completed">Completed</a>
+          <a class="dropdown-item" href="/admin/all-posts?status=Upcoming">Upcoming</a>
+        </div>
+      </div>
+      <a href="/admin/create-post" class="btn btn-success">Create New</a>
+    </div>
     <div class="table-responsive">
-        <h3 class="text-center py-3">All Projects</h3>
+        </div>
         <table >
           <tr style="background-color: black; color:white">
             <th class="px-3">Id</th>
             <th>Title</th>
             <th>Thumnail</th>
+            <th>Staus</th>
             <th>Actions</th>
           </tr>
 
@@ -23,6 +39,15 @@
               <td>
                 <% if(project.thumbnail){ %>
                   <img style="width: 100px; height: 100px" src="http://localhost:3000/upload/projects/<%= project.thumbnail %>" alt="">
+                <% } %> 
+              </td>
+              <td class="text-light">
+                <% if(project.status == 'Completed'){ %> 
+                  <span class="bg-danger badge"><%= project.status %> </span>
+                <% }else if(project.status == 'Ongoing'){ %> 
+                  <span class="bg-success badge"><%= project.status %> </span>
+                <% }else { %> 
+                  <span class="bg-primary badge"><%= project.status %> </span>
                 <% } %> 
               </td>
               <td>

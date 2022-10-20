@@ -9,7 +9,14 @@
 
           <div class="my-3 py-2 sticky-top d-flex  justify-content-between align-items-center" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.2)">
             <h6 class="text-center mb-0 mx-2">Create Project</h6>
-            <button type="submit" class="btn btn-<%= project ? "warning": "primary" %>" style="min-width: 150px;"><%= project? "Update": "Publish" %> </button>
+            <div>
+              <% if(project){ %> 
+                <a  href="/project/<%= project.id %>" target="_blank"  class="btn btn-success"><i class='bx bx-show mx-1'></i> <span>view</span></a>
+              <% } %> 
+              
+              <button type="submit" class="btn btn-<%= project ? "warning": "primary" %>" style="min-width: 150px;"><%= project? "Update": "Publish" %> </button>
+            </div>
+           
           </div>
 
           <label for="title">Post Title</label>
@@ -35,7 +42,7 @@
                 <option class="py-2 px-5" value="Completed" <%= project &&  project.status == 'Completed' ? 'selected' : '' %>>Completed</option>
                 <option class="py-2 px-5" value="Upcoming" <%= project &&  project.status == 'Upcoming' ? 'selected' : '' %>>Upcoming</option>
             </select>
-            <input id="result" name="status" value="" class="d-none" >
+            <input id="result" name="status" value="<%= project &&  project.status? project.status : '' %>" class="d-none" >
 
         </div>
           <div class="mb-3">
@@ -82,8 +89,8 @@
         <div class="form-row my-2 mt-5">
           <div class="form-group col-md-6">
             <label for="address">Address</label>
-            <input maxlength="50" type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp"
-              value="<%= project ? project.address : '' %>"  >
+            <input maxlength="50" type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp" placeholder="Make it shorter"
+              value="<%= project ? project.address : '' %>"  required>
           </div>
           <div class="form-group col-md-6">
             <label for="apartment_size">Apartment Size</label>

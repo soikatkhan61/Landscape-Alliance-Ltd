@@ -27,14 +27,8 @@
 
       .swiper-slide img {
         display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      body {
-        background: #000;
-        color: #000;
+        max-width: 100%;
+        max-height: 100%;
       }
 
       .swiper {
@@ -82,12 +76,15 @@
   <div class="container py-5">
     <div class="project-brife">
      <div class="row">
-      <div class="col-sm-12 col-md-5">
+      <div class="col-sm-12 col-md-5 m-2">
         <div
-        style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+        style="--swiper-navigation-color: rgb(0, 0, 0); --swiper-pagination-color: rgb(0, 0, 0);"
         class="swiper mySwiper2"
       >
         <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/upload/projects/<%= project.thumbnail %> " />
+          </div>
           <% projectImages.forEach(image => { %>
             <div class="swiper-slide">
               <img src="/upload/projects/<%= image %> " />
@@ -108,17 +105,30 @@
       </div>
     
       </div>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6  rounded shadow-sm" style="background-color: #fff;border-left: 7px solid #2584EE;" >
         <div class="table-responsive">
           <table class="table">
             <tbody>
               <tr>
-                <td> <i class="fa-solid fa-building-wheat mx-2"></i> Project Name</td>
-                <td> <%= project.title %></td>
+                <td class="fw-bold"> <i class="fa-solid fa-building-wheat mx-2"></i> Project Name</td>
+                <td class="fw-bold"><%= project.title %></td>
               </tr>
               <tr>
-                <td> <i class="fa-solid fa-location-dot mx-2"></i> Address </td>
+                <td> <i class="fa-solid fa-location-dot mx-2"></i>Address </td>
                 <td class="<%= project.address ? '' : 'fst-italic' %>"><%= project.address ? project.address : 'null' %>  </td>
+              </tr>
+              <tr>
+                <td><i class="fa-sharp fa-solid fa-check-to-slot mx-2"></i> Status </td>
+                <td class="<%= project.status ? '' : 'fst-italic' %>">
+                  <% if(project.status == 'Completed'){ %> 
+                    <span class="bg-danger badge"><%= project.status %> </span>
+                  <% }else if(project.status == 'Ongoing'){ %> 
+                    <span class="bg-success badge"><%= project.status %> </span>
+                  <% }else { %> 
+                    <span class="bg-primary badge"><%= project.status %> </span>
+                  <% } %> 
+                  
+                 </td>
               </tr>
               <tr>
                 <td> <i class="fa-solid fa-text-width mx-2"></i>Apartment size</td>
@@ -152,7 +162,7 @@
            
           </table>
           <% if(project.google_map){ %> 
-            <a href="#googleMap" class="btn btn-success"><i class="fa-solid fa-arrow-up-right-from-square mx-2"></i> view on google map</a>
+            <a href="#googleMap" class="btn btn-success mb-2"><i class="fa-solid fa-arrow-up-right-from-square mx-2"></i> view on google map</a>
           <% } %> 
          
          
@@ -162,21 +172,16 @@
     </div>
 
  
-    <div class="row my-5">
-      <div class="col-1"></div>
-      <div class="col-10">
-        <%- project.description %> 
-      </div>
-      <div class="col-1"></div>
+    <div class="container py-4 mt-5 shadow-sm" style="background-color: #fff;">
+      <%- project.description %> 
     </div>
-   
 
-    <div class="container-fluid" style="background-color: #fafafa;" >
+    <div class="" style="background-color: #fafafa;" >
       <% if(project.youtube_video){ %> 
-        <div class="my-5 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
+        <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
           <h4 class="text-center mb-0" style="color:#070ad1">Project Video</h4>
         </div>
-        <div class="container py-4" id="youtube_video">
+        <div class="py-3" id="youtube_video">
           <style>
             .embed-youtube {
               position: relative;
@@ -208,8 +213,8 @@
 
 
     <% if(projectImages.length > 0){ %> 
-      <div class="my-5 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
-        <h4 class="text-center mb-0" style="color:#070ad1">Project Images</h4>
+      <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
+        <h4 class="text-center mb-0" style="color:#070ad1">Some Snapshot of <span class="fw-bold fst-italic"><%= project.title %> ! </span> </h4>
       </div>
     <% } %> 
     <div class="row row-cols-1 row-cols-md-3 g-4 project_img">
@@ -223,69 +228,173 @@
 
       </div>
   </div>
-</div>
-<style>
- .popup-img{
-  position: fixed;
-  top:0;
-  left: 0;
-  background-color: rgba(0,0,0,0.8);
-  height: 100%;
-  width: 100%;
-  z-index: 100;
-  display: none;
- }
- .popup-img img{
-  position: absolute;
-  top:50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  border: 3px solid white;
-  border-radius: 5px;
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: cover;
- }
-.popup-img span{
-  position: absolute;
-  top:0;
-  right: 10px;
-  font-size: 60px;
-  font-weight: bolder;
-  color: #fff;
-  cursor: pointer;
- }
 
- @media (max-width:768px){
-  .popup-img img{
-    width: 90%;
-    height: 400px;
-  }
- }
-</style>
-<div class="popup-img">
-  <span id="cross">&times;</span>
-  <img  src="/upload/projects/<%= projectImages[0] %> " alt="...">
-</div>
+  <style>
+    .popup-img{
+     position: fixed;
+     top:0;
+     left: 0;
+     background-color: rgba(0,0,0,0.8);
+     height: 100%;
+     width: 100%;
+     z-index: 1000;
+     display: none;
+    }
+    .popup-img img{
+     position: absolute;
+     top:50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     border: 3px solid white;
+     border-radius: 5px;
+     max-width: 90%;
+     max-height: 90%;
+     object-fit: cover;
+    }
+   .popup-img span{
+     position: absolute;
+     top:0;
+     right: 10px;
+     font-size: 60px;
+     font-weight: bolder;
+     color: #fff;
+     cursor: pointer;
+    }
+   
+    @media (max-width:768px){
+     .popup-img img{
+       width: 90%;
+       height: 400px;
+     }
+    }
+   </style>
+   <div class="popup-img">
+     <span id="cross">&times;</span>
+     <img  src="/upload/projects/<%= projectImages[0] %> " alt="...">
+   </div>
+   
+   
+   <div class="container" style="background-color: #fafafa;" >
+     <% if(project.google_map){ %> 
+       <div class="container py-1" id="googleMap">
+         <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
+           <h4 class="text-center mb-0" style="color:#070ad1"><span class="fw-bold fst-italic"><%= project.title %></span>  on google map !</h4>
+         </div>
+         <div class="embed-youtube ">
+           <%- project.google_map  %> 
+         </div>
+       </div>
+     <% } %> 
+   </div>
 
-
-<div class="container-fluid" style="background-color: #fafafa;" >
-  <% if(project.google_map){ %> 
-    <div class="container py-4" id="googleMap">
-      <div class="my-5 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
-        <h4 class="text-center mb-0" style="color:#070ad1"><%= project.title %>  on google map</h4>
-      </div>
-      <div class="embed-youtube ">
-        <%- project.google_map  %> 
+ <div class="container" >
+  <div>
+    <div class="containers">
+          <img src="img/shape.png" class="square" alt="" />
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Let's get in touch</h3>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            dolorum adipisci recusandae praesentium dicta!
+          </p>
+  
+          <div class="info">
+            <div class="information">
+              <img src="img/location.png" class="icon" alt="" />
+              <p>92 Cherry Drive Uniondale, NY 11553</p>
+            </div>
+            <div class="information">
+              <img src="img/email.png" class="icon" alt="" />
+              <p>lorem@ipsum.com</p>
+            </div>
+            <div class="information">
+              <img src="img/phone.png" class="icon" alt="" />
+              <p>123-456-789</p>
+            </div>
+          </div>
+  
+          <div class="social-media">
+            <p>Connect with us :</p>
+            <div class="social-icons">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+  
+          <form action="/message" method="post" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" id="name"  required maxlength="30"/>
+              <label for="">Full Name *</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" id="email"  class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone" class="input"  id="phone"  required maxlength="15"/>
+              <label for="">Phone *</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"  id="message" required maxlength="500"></textarea>
+              <label for="">Message *</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btnn" />
+          </form>
+        </div>
       </div>
     </div>
-  <% } %> 
+  </div>
+ </div>
+  
+   
 </div>
+
 
 
 <script src='https://unpkg.com/swiper/swiper-bundle.js'></script>
 
   <script>
+
+const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc() {
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});
+
 
     var swiper = new Swiper(".mySwiper", {
       spaceBetween: 10,

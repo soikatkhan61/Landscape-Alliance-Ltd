@@ -107,7 +107,7 @@
                                             </td>
                                             <td> <%= totalMessage[i].email %></td>
                                             <td>
-                                               <%= moment(totalMessage[i].createdAt.toDateString()) %> 
+                                               <%= moment(totalMessage[i].createdAt) %> 
                                             </td>
                                             <td>
                                                <a href="/admin/messages/<%= totalMessage[i].id %> " class="btn btn-sm btn-primary">view message</a>

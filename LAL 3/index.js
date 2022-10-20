@@ -1,10 +1,6 @@
 const express = require("express")
 const moment = require("moment")
 
-
-//import code
-const {homePageGetController} = require("./controllers/myController")
-
 //import middleware
 const setMiddleware = require("./middleware/middleware")
 //import route

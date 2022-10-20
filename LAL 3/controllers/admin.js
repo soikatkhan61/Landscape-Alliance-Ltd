@@ -99,7 +99,12 @@ exports.createPostPostController = async (req, res)=>{
 
 exports.allPostsGetController = async (req, res)=>{
 
-  const [rows, fields] = await db.query("select * from projects");
+  let status = req.query.status 
+  let sql = "select id,title,thumbnail,status from projects"
+  if(status){
+    sql = `select id,title,thumbnail,status from projects where status = '${status}'`
+  }
+  const [rows, fields] = await db.query(sql);
 
   res.render("./admin/posts", {projects: rows})
 }

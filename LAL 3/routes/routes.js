@@ -1,9 +1,11 @@
-const authRoute = require("./auth")
-const mvc = require("./mvc")
+const authRoute = require('./authRoute')
 const admin = require('./admin')
 const projectRoute = require('./projectsRoute')
 const messageRoute = require('./messageRoute')
+const policyRoute = require('./policyRoute')
+const aboutRoute = require('./aboutRoute')
 const orderRoute = require('./orderRoute')
+const {homePageGetController,aboutPageGetController} = require("../controllers/homeController")
 
 
 const routes = [
@@ -14,13 +16,19 @@ const routes = [
     },
     {
         path: "/about",
-        handler: (req,res)=>{
-            res.render("pages/about")
-        }
+        handler: aboutRoute
+    },
+    {
+        path: "/admin",
+        handler: admin
     },
     {
         path: "/project",
         handler: projectRoute
+    },
+    {
+        path: "/policy",
+        handler: policyRoute
     },
     {
         path: "/message",
@@ -31,14 +39,8 @@ const routes = [
         handler: orderRoute
     },
     {
-        path: "/admin",
-        handler: admin
-    },
-    {
         path: "/",
-        handler: (req,res)=>{
-            res.render("pages/index")
-        }
+        handler:homePageGetController
     }
 ]
 
