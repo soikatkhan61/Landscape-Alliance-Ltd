@@ -161,9 +161,13 @@
             </tbody>
            
           </table>
-          <% if(project.google_map){ %> 
-            <a href="#googleMap" class="btn btn-success mb-2"><i class="fa-solid fa-arrow-up-right-from-square mx-2"></i> view on google map</a>
-          <% } %> 
+          <div>
+            <a href="/order" class="btn btn-sm btn-primary mb-1">Book Now</a>
+            <% if(project.google_map){ %> 
+              <a href="#googleMap" class="btn btn-sm  btn-success mb-1"><i class="fa-solid fa-arrow-up-right-from-square mx-1"></i>view on google map</a>
+            <% } %> 
+          </div>
+         
          
          
         </div>
@@ -179,7 +183,7 @@
     <div class="" style="background-color: #fafafa;" >
       <% if(project.youtube_video){ %> 
         <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
-          <h4 class="text-center mb-0" style="color:#070ad1">Project Video</h4>
+          <h6 class="text-center mb-0" style="color:#070ad1">Project Video</h6>
         </div>
         <div class="py-3" id="youtube_video">
           <style>
@@ -214,7 +218,7 @@
 
     <% if(projectImages.length > 0){ %> 
       <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
-        <h4 class="text-center mb-0" style="color:#070ad1">Some Snapshot of <span class="fw-bold fst-italic"><%= project.title %> ! </span> </h4>
+        <h6 class="text-center mb-0" style="color:#070ad1">Some Snapshot of <span class="fw-bold fst-italic"><%= project.title %> ! </span> </h6>
       </div>
     <% } %> 
     <div class="row row-cols-1 row-cols-md-3 g-4 project_img">
@@ -278,7 +282,7 @@
      <% if(project.google_map){ %> 
        <div class="container py-1" id="googleMap">
          <div class="mt-5 mb-3 py-3" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.4)">
-           <h4 class="text-center mb-0" style="color:#070ad1"><span class="fw-bold fst-italic"><%= project.title %></span>  on google map !</h4>
+           <h6 class="text-center mb-0" style="color:#070ad1"><span class="fw-bold fst-italic"><%= project.title %></span>  on google map !</h6>
          </div>
          <div class="embed-youtube ">
            <%- project.google_map  %> 
@@ -291,78 +295,79 @@
   <div>
     <div class="containers">
           <img src="img/shape.png" class="square" alt="" />
-      <div class="form">
-        <div class="contact-info">
-          <h3 class="title">Let's get in touch</h3>
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum adipisci recusandae praesentium dicta!
-          </p>
-  
-          <div class="info">
-            <div class="information">
-              <img src="img/location.png" class="icon" alt="" />
-              <p>92 Cherry Drive Uniondale, NY 11553</p>
+          <div class="form">
+            <div class="contact-info">
+              <h3 class="title">Let's get in touch</h3>
+              <p class="text">
+                75/ 2 Ridgedale Complex, Uttar Badda, Suit 6-B,  
+              </p>
+    
+              <div class="info">
+                <div class="information">
+                  <img src="img/location.png" class="icon" alt="" />
+                  <p> 75/ 2 Ridgedale Complex, Uttar Badda, Suit 6-B, </p>
+                </div>
+                <div class="information">
+                  <img src="img/email.png" class="icon" alt="" />
+                  <p>lorem@ipsum.com</p>
+                </div>
+                <div class="information">
+                  <img src="img/phone.png" class="icon" alt="" />
+                  <p>01712000384,01712602241,01713031072 <br>
+                    01712602242
+                     01847231772,01742936950</p>
+                </div>
+              </div>
+    
+              <div class="social-media">
+                <p>Connect with us :</p>
+                <div class="social-icons">
+                  <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="information">
-              <img src="img/email.png" class="icon" alt="" />
-              <p>lorem@ipsum.com</p>
-            </div>
-            <div class="information">
-              <img src="img/phone.png" class="icon" alt="" />
-              <p>123-456-789</p>
+    
+            <div class="contact-form">
+              <span class="circle one"></span>
+              <span class="circle two"></span>
+    
+              <form action="/message" method="post" autocomplete="off">
+                <h3 class="title">Contact us</h3>
+                <div class="input-container">
+                  <input type="text" name="name" class="input" id="name"  required maxlength="30"/>
+                  <label for="">Full Name *</label>
+                  <span>Username</span>
+                </div>
+                <div class="input-container">
+                  <input type="email" name="email" id="email"  class="input" />
+                  <label for="">Email</label>
+                  <span>Email</span>
+                </div>
+                <div class="input-container">
+                  <input type="tel" name="phone" class="input"  id="phone"  required maxlength="15"/>
+                  <label for="">Phone *</label>
+                  <span>Phone</span>
+                </div>
+                <div class="input-container textarea">
+                  <textarea name="message" class="input"  id="message" required maxlength="500"></textarea>
+                  <label for="">Message *</label>
+                  <span>Message</span>
+                </div>
+                <input type="submit" value="Send" class="btnn" />
+              </form>
             </div>
           </div>
-  
-          <div class="social-media">
-            <p>Connect with us :</p>
-            <div class="social-icons">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-  
-        <div class="contact-form">
-          <span class="circle one"></span>
-          <span class="circle two"></span>
-  
-          <form action="/message" method="post" autocomplete="off">
-            <h3 class="title">Contact us</h3>
-            <div class="input-container">
-              <input type="text" name="name" class="input" id="name"  required maxlength="30"/>
-              <label for="">Full Name *</label>
-              <span>Username</span>
-            </div>
-            <div class="input-container">
-              <input type="email" name="email" id="email"  class="input" />
-              <label for="">Email</label>
-              <span>Email</span>
-            </div>
-            <div class="input-container">
-              <input type="tel" name="phone" class="input"  id="phone"  required maxlength="15"/>
-              <label for="">Phone *</label>
-              <span>Phone</span>
-            </div>
-            <div class="input-container textarea">
-              <textarea name="message" class="input"  id="message" required maxlength="500"></textarea>
-              <label for="">Message *</label>
-              <span>Message</span>
-            </div>
-            <input type="submit" value="Send" class="btnn" />
-          </form>
-        </div>
-      </div>
     </div>
   </div>
  </div>

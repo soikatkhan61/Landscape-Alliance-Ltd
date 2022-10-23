@@ -12,7 +12,7 @@ const {uploadPostImagesController} = require('../api/controllers/postControllers
 
 const {renderAdminDashboard} = require('../controllers/admin/dashboardController')
 
-const {msgGetContrller,singleMsgGetContrller,deleteMsgGetContrller} = require("../controllers/contactUsController")
+const {msgGetContrller,singleMsgGetContrller,deleteMsgGetContrller,respondMessage} = require("../controllers/contactUsController")
 const {adminOrderGetController,respondController,deleteOrdersController} = require("../controllers/orderController")
 
 router.get("/create-post",isAuthenticated, createPostGetController)
@@ -23,10 +23,11 @@ router.get("/all-posts",isAuthenticated, allPostsGetController);
 
 router.post("/upload-post-images",isAuthenticated, uploadPostImagesController)
 
-router.get("/messages",isAuthenticated, msgGetContrller)
+
+router.get("/messages/respond",isAuthenticated, respondMessage)
 router.get("/messages/:msg_id",isAuthenticated, singleMsgGetContrller)
 router.get("/messages/delete/:msg_id",isAuthenticated, deleteMsgGetContrller)
-
+router.get("/messages",isAuthenticated, msgGetContrller)
 
 
 router.get("/orders/respond",isAuthenticated, respondController)

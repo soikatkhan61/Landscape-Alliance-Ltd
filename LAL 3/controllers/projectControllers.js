@@ -1,16 +1,43 @@
 const db = require('../config/db')
 const fs = require('fs')
 
+exports.renderAllProjects = async(req, res)=>{
+
+  let type = req.query.type
+  let ariaInUrl = req.query.aria
+  let sql  ='select * from projects limit 8'
+  console.log(ariaInUrl);
+  if(ariaInUrl){
+    sql = `select * from projects where address='${ariaInUrl}' limit 8`
+  }
+
+  if(type){
+    sql = `select * from projects where status ='${type}' limit 8`
+  }
+
+  if(ariaInUrl && type){
+    sql = `select * from projects where status ='${type}' and address='${ariaInUrl}' limit 8`
+  }
+
+  const [aria,ariaFeilds] = await db.query("select address from projects")
+  console.log(sql);
+  const [rows, fields] = await db.query(sql);
+  let projectImages
+  if(rows.length > 0){
+    projectImages = JSON.parse(rows[0].gallery)
+  }
+ 
+  res.render('pages/all-projects', {projects: rows ,title:'Landscape Creations', projectImages,aria});
+}
+
+
 exports.singleProjectGetController = async(req, res)=>{
   const id = req.params.id;
-  
-  console.log("id", id)
+
   const [rows, fields] = await db.query("select * from projects where id=?", [id]);
-  console.log(rows)
   const projectImages = JSON.parse(rows[0].gallery)
   
-
-  res.render('pages/single-project', {project: rows[0], projectImages});
+  res.render('pages/single-project', {project: rows[0],title: rows[0].title, projectImages});
 }
 
 exports.projectEditGetController = async(req, res)=>{
@@ -24,7 +51,7 @@ exports.projectEditGetController = async(req, res)=>{
 
   const projectImages = JSON.parse(rows[0].gallery)
 
-  res.render('admin/create-post', {project: rows[0], projectImages})
+  res.render('admin/create-post', {project: rows[0], title:`Edit ${rows[0].title}`, projectImages})
 }
 
 exports.projectDeleteGetController = async(req, res)=>{

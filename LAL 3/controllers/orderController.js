@@ -4,7 +4,7 @@ const errorFormatter = require("../utils/validationErrorFormatter");
 
 exports.renderOrderController = async (req, res, next) => {
   try {
-    res.render("pages/orderPage",{ values: '',
+    res.render("pages/orderPage",{title:'Book Now', values: '',
       error: ''});
   } catch (error) {
     next(error);
@@ -19,6 +19,7 @@ exports.orderPostController = async (req, res, next) => {
     console.log("ami execute hoichi");
     if (!errors.isEmpty()) {
       return res.render("pages/orderPage", {
+        title:'Book Now',
         values: {
           name,
           email,
@@ -33,12 +34,10 @@ exports.orderPostController = async (req, res, next) => {
     const [rows, fields] = await db.query('insert into orders values(?,?,?,?,?,?,?,?,?)',[null,name,email,phone,project_name,area_pref,'0',null,null]);
 
     if(rows.insertId){
-        res.render("pages/utils/thankyou",{name})
+        res.render("pages/utils/thankyou",{title:`Thank you ${name}!`,name})
     }else{
         res.send('falied')
     }
-
-    console.log("ami execute hoini vai");
   } catch (error) {
     next(error);
   }
@@ -63,7 +62,6 @@ exports.adminOrderGetController = async (req,res,next) => {
 
 exports.respondController = async (req,res,next) => {
   let order_id = req.query.id
-
   try {
     const [rows, fields] = await db.query("update orders set respond = '1' where id = ?",[order_id]);
     if(rows.changedRows){

@@ -8,3 +8,13 @@ CREATE TABLE IF NOT EXISTS users (
     profilePics varchar(200) DEFAULT "/uploads/avater.jpg",
     createdAt TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 );
+
+CREATE TABLE IF NOT EXISTS contact (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name varchar (50) not null,
+    email VARCHAR(255),
+    phone VARCHAR(15) NOT NULL,
+    message varchar(1000),
+    respond ENUM('yes','no'),
+    createdAt TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+);

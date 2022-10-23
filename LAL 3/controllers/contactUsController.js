@@ -1,17 +1,17 @@
 const db = require('../config/db')
 
 exports.contactUsPostController = async(req,res,next) =>{
-    console.log(req.body)
+
     try {
         let {name,email,phone,message} = req.body
         if(name == '' || phone == '' || message == ''){
            return res.redirect("/")
         }
 
-        const [rows, fields] = await db.query('insert into contact values(?,?,?,?,?,?)',[null,name,email,phone,message,null]);
+        const [rows, fields] = await db.query('insert into contact values(?,?,?,?,?,?,?)',[null,name,email,phone,message,'no',null]);
 
         if(rows.insertId){
-            res.render("pages/utils/thankyou",{name})
+            res.render("pages/utils/thankyou",{title:`Thank you ${name}!` , name})
         }else{
             res.send('falied')
         }
@@ -24,9 +24,24 @@ exports.contactUsPostController = async(req,res,next) =>{
 
 exports.msgGetContrller = async(req,res,next) =>{
     try {
-        const [rows,fields] =await db.query("select * from contact order by id desc")
+        let respond = req.query.responded
+        let sql = 'select * from contact order by id desc'
+        if(respond){
+            sql = `select * from contact where respond = '${respond}' order by id desc`
+        }
+        const [rows,fields] =await db.query(sql)
 
       res.render("admin/pages/messages",{msgs:rows})
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.respondMessage = async(req,res,next) =>{
+    try {
+        let id = req.query.id
+        const [rows,fields] =await db.query("update contact set respond='yes' where id = ?",[id])
+        res.redirect('/admin/messages')
     } catch (error) {
         next(error)
     }

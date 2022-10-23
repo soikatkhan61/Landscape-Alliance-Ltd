@@ -23,6 +23,22 @@ setMiddleware(app)
 //set the routes from routes directory
 setRoutes(app)
 
+app.use((req,res,next) =>{
+    let error = new Error("404 page not found")
+    error.status = 404
+
+    next(error)
+})
+
+app.use((error,req,res,next) =>{
+    if(error.status == 404){
+        return res.render("pages/error/404" ,{title: "Page not found",flashMessage:""})
+    }
+    console.log(error)
+    res.render("pages/error/500",{title: "Internel server errors found",flashMessage:"" })
+})
+
+
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{

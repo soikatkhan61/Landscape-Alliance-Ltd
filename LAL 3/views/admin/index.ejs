@@ -99,18 +99,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for(let i=totalMessage.length-1; i>=totalMessage.length - 5;i--){ %> 
+                                    <% for(let m of totalMessage){ %> 
                                         <tr>
-                                            <td><%= totalMessage[i].id %> </td>
+                                            <td><%= m.id %> </td>
                                             <td>
-                                                <%= totalMessage[i].name %>
+                                                <%= m.name %>
                                             </td>
-                                            <td> <%= totalMessage[i].email %></td>
+                                            <td> <%= m.email %></td>
                                             <td>
-                                               <%= moment(totalMessage[i].createdAt) %> 
+                                               <%= moment(m.createdAt) %> 
                                             </td>
                                             <td>
-                                               <a href="/admin/messages/<%= totalMessage[i].id %> " class="btn btn-sm btn-primary">view message</a>
+                                               <a href="/admin/messages/<%= m.id %> " class="btn btn-sm btn-primary">view message</a>
                                             </td>
                                         </tr>
                                     <% } %> 
@@ -147,18 +147,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for(let i=totalMessage.length-1; i>=totalMessage.length - 5;i--){ %> 
+                                    <% for(let m of totalMessage){ %> 
                                         <tr>
-                                            <td><%= totalMessage[i].id %> </td>
+                                            <td><%= m.id %> </td>
                                             <td>
-                                                <%= totalMessage[i].name %>
+                                                <%= m.name %>
                                             </td>
-                                            <td> <%= totalMessage[i].email %></td>
+                                            <td> <%= m.email %></td>
                                             <td>
-                                               <%= moment(totalMessage[i].createdAt.toDateString()) %> 
+                                               <%= moment(m.createdAt) %> 
                                             </td>
                                             <td>
-                                               <a href="/admin/messages/<%= totalMessage[i].id %> " class="btn btn-sm btn-success">view message</a>
+                                               <a href="/admin/messages/<%= m.id %> " class="btn btn-sm btn-primary">view message</a>
                                             </td>
                                         </tr>
                                     <% } %> 

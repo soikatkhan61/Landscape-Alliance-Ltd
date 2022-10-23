@@ -7,5 +7,8 @@ router.get("/profile",brandProfileRender)
 router.get("/mission",renderMission)
 router.get("/vision",renderVision)
 router.get("/promices",renderPromices)
+router.get("/",(req,res)=>{
+    res.render("pages/error/500",{flashMessage:''})
+})
 
 module.exports = router
