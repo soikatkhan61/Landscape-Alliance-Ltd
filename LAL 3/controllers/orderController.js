@@ -4,8 +4,10 @@ const errorFormatter = require("../utils/validationErrorFormatter");
 
 exports.renderOrderController = async (req, res, next) => {
   try {
+    const [rows, fields] = await db.query('select title from projects');
+    console.log(rows);
     res.render("pages/orderPage",{title:'Book Now', values: '',
-      error: ''});
+      error: '',location:rows});
   } catch (error) {
     next(error);
   }

@@ -61,14 +61,13 @@
                       
                         <select id="country" class="py-2 px-4 w-100" onchange="update();">
                             <option class="py-2 px-5" value="none">Select Project</option>
-                            <option class="bg-danger" style="height: 30px;" value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>
-                            <option value="6">Six</option>
-                            <option value="7">Seven</option>
-                            <option value="8">Eight</option>
+                           <% if(location.length>0){ %> 
+                            <% for(let l of location){ %> 
+                              <option value="<%= l.title %>"><%= l.title %></option>
+                            <% } %> 
+                           <% }else{ %> 
+                            <option disabled>No Location found!</option>
+                           <% }%> 
                           </select>
                         <input id="result" name="project_name" class="d-none">
                     </div>

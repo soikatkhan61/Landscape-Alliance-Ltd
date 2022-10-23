@@ -322,7 +322,7 @@
   }
   
   @media (max-width: 480px) {
-    .container {
+    .containers {
       padding: 1.5rem;
     }
   

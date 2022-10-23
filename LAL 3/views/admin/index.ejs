@@ -142,26 +142,24 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Project Name</th>
+                                        <th>Area</th>
                                         <th>Time</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for(let m of totalMessage){ %> 
+                                    <% for(let m of totalOrder) {%> 
                                         <tr>
-                                            <td><%= m.id %> </td>
-                                            <td>
-                                                <%= m.name %>
-                                            </td>
-                                            <td> <%= m.email %></td>
-                                            <td>
-                                               <%= moment(m.createdAt) %> 
-                                            </td>
-                                            <td>
-                                               <a href="/admin/messages/<%= m.id %> " class="btn btn-sm btn-primary">view message</a>
-                                            </td>
-                                        </tr>
-                                    <% } %> 
+                                            <td class="px-3"><%= m.id %> </td>
+                                            <td><%= m.name%> </td>
+                                            <td><%= m.email %> </td>
+                                            <td> <a href="tel:<%= m.phone %>"><%= m.phone %></a> </td>
+                                            <td><%= m.project_name %> </td>
+                                            <td><%= m.area ? m.area : '---' %> </td>
+                                            <td><%= moment(m.createdAt) %> </td>                        
+                                          </tr>
+                                      <% }%> 
                                 
                                     
                                 </tbody>

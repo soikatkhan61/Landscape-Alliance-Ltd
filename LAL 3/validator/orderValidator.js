@@ -11,7 +11,7 @@ module.exports = [
             .normalizeEmail().trim(),
 
         body('phone')
-            .isLength({min:11,max:15}).withMessage('Phone number must be between 11 to 15 charecter')
+            .isLength({min:5,max:15}).withMessage('Phone number must be between 5 to 15 charecter')
             .not().isEmpty().withMessage('Please provide your number!').trim(),
             
         body('project_name')
