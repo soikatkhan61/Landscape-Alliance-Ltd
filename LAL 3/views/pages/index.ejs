@@ -3,38 +3,40 @@
 <style>
   .main-landing{
     position: relative;
-    
+    overflow: hidden;
+    border: 5px solid red;
   }
-  .overlay img{
+
+  .main-landing img {
+    margin: 0px;
+    z-index: auto;
+    padding: 0px;
     max-height: 90vh;
-  }
-  .overlay:before {
-    content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-image: linear-gradient(to bottom right,#000000,#242424);
-        opacity: 0.3;
-  }
-
-  .absPos{
-    position: absolute;
-    top: 30%;
-    left: 5%;
-  }
- 
-
+    border-width: 0px;
+    border-radius: 0px;
+    filter: none;
+}
+ #radiul_menu{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  z-index: 100;
+ }
 
 </style>
 <div class="main-landing">
   <div class="overlay">
     <img src="/images/landing.jpg" alt="Landscape" width="100%">
   </div>
-  <div class="container absPos text-light">
-    <h1 class="display-6 display-md-2 display-lg-1 fw-bold">Landscape Alliance ltd</h1>
-    <a href="/project" class="btn btn-primary">Our Projects</a>
+  <div id="radiul_menu" class="menu">
+    <ul class="p-0">
+      <li class="p-0"><span>Trip</span></li>
+      <li class="p-0"><span>Service</span></li>
+      <li class="p-0"><span>Route</span></li>
+      <li class="p-0"><span>Stop</span></li>
+    </ul>
   </div>
 </div>
 
@@ -63,7 +65,14 @@
 </div>
 <% } %> 
 
-  <div class="container-fluid" >
+  <div  >
+
+    <div class="container btn-container" style="min-height: 200px;background-color: #10122d;border-radius: 45px 0px 45px 0px;">
+      <div class="btns"><a href="#">Completed</a></div>
+      <div class="btns"><a href="#">Ongoing</a></div>
+      <div class="btns"><a href="#">Upcoming</a></div>
+    </div>
+
   <div class="py-4">
     <div>
       <center>
@@ -123,7 +132,7 @@
     
   </div>
 
-  <div class="container py-5">
+  <div class="d-flex justify-content-center py-5">
     <div class="counter_wrapper" id="counter_wrapper">
       <div class="counter_container">
         <i class="fas fa-utensils"></i>
@@ -161,42 +170,29 @@
       <div class="main-timeline">
         <div class="timeline">
           <a href="#" class="timeline-content">
+            <span class="timeline-year">2015</span>
+            <div class="timeline-icon">
+             
+            </div>
+            <div class="content">
+              <h3 class="title">Started Journey</h3>
+              <p class="description">
+                Landscape started its Journey, project at Banasree & Moghbazar to deliver era of architecture value.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="timeline">
+          <a href="#" class="timeline-content">
             <span class="timeline-year">2018</span>
-            <div class="timeline-icon">
-              <i class="fa fa-rocket" aria-hidden="true"></i>
-            </div>
-            <div class="content">
-              <h3 class="title">Web Development</h3>
-              <p class="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="timeline">
-          <a href="#" class="timeline-content">
-            <span class="timeline-year">2017</span>
-            <div class="timeline-icon">
-              <i class="fa fa-users" aria-hidden="true"></i>
-            </div>
-            <div class="content">
-              <h3 class="title">JavaScript</h3>
-              <p class="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="timeline">
-          <a href="#" class="timeline-content">
-            <span class="timeline-year">2017</span>
             <div class="timeline-icon">
               <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
             <div class="content">
-              <h3 class="title">Mongo DB</h3>
+              <h3 class="title">First Handover</h3>
               <p class="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                Handover first two Projects, To change the motto of the business,  started diagram with niche clients in specific areas
               </p>
             </div>
           </a>
@@ -204,28 +200,14 @@
         
         <div class="timeline">
           <a href="#" class="timeline-content">
-            <span class="timeline-year">2017</span>
-            <div class="timeline-icon">
-              <i class="fa fa-apple" aria-hidden="true"></i>
-            </div>
-            <div class="content">
-              <h3 class="title">Laravel</h3>
-              <p class="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="timeline">
-          <a href="#" class="timeline-content">
-            <span class="timeline-year">2017</span>
+            <span class="timeline-year">2021-22</span>
             <div class="timeline-icon">
               <i class="fa fa-edit" aria-hidden="true"></i>
             </div>
             <div class="content">
-              <h3 class="title">Creapure</h3>
+              <h3 class="title">Projects</h3>
               <p class="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                Hand over several projects at bashundhara and Uttara, setup a new era of modern architecture, and Finishing materials  to setup each apartment with uniqueness.
               </p>
             </div>
           </a>
@@ -234,7 +216,103 @@
     </div>
   </div>
 </div> 
-</div>   
+</div> 
+
+<div class="board-of-directors">
+
+  <h3 class="text-center mt-5 text-primary fw-bold display-6">Board of Directors</h3>
+  <div class="cards-container">
+
+    <div class=" cards card-two">
+      <header>
+        <div class="avatar">
+          <img src="/images/bibhas.png" alt="Bibhash Das" />
+        </div>
+      </header>
+      
+      <h3>Bibhash Das</h3>
+      <p class="text-center pb-0 fw-bold">Head of Marketing</p>
+      <div class="desc">
+        Under his leadership, Landscape strives to strengthen its strategic marketing and branding
+        <br>
+        <span class="fw-bold">Read More</span>
+      </div>
+      <div class="contacts d-flex justify-content-center">
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <div class="clear"></div>
+      </div>
+      
+      <footer>
+        <p>
+          <a href="https://www.facebook.com/profile.php?id=100080396170073"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+    </div>
+    
+    <div class="cards card-one">
+      <header>
+        <div class="avatar">
+          <img src="/images/asfaq.png" alt="Ashfaqur Rahman" />
+        </div>
+      </header>
+  
+      <h3>Ashfaqur Rahman</h3>
+      <p class="text-center pb-0 fw-bold">Managing Director</p>
+      <div class="desc">
+        A distinguished and perceptive entrepreneur, Ashfaqur Rahman , the founder promoter of Landscape
+        <br>
+        <span class="fw-bold">Read More</span>
+      </div>
+      <div class="contacts d-flex justify-content-center">
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <div class="clear"></div>
+      </div>
+
+      <footer>
+        <p>
+          <a href="https://www.facebook.com/ashfaqur.rahman1"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+    </div>
+  
+    <div class=" cards card-two">
+    <header>
+      <div class="avatar">
+        <img src="/images/waheduzzaman.jpg" alt="Waheduzzaman Abrar" />
+      </div>
+    </header>
+    
+    <h3>Waheduzzaman Abrar</h3>
+    <p class="text-center pb-0 fw-bold">Head of Admin & Accounts</p>
+    <div class="desc">
+      With more than five four of administration experience in the real estate sector
+      <br>
+      <span class="fw-bold">Read More</span>
+    </div>
+    <div class="contacts d-flex justify-content-center">
+      <a href=""><i class="fa fa-envelope"></i></a>
+      <div class="clear"></div>
+    </div>
+    
+     <footer>
+        <p>
+          <a href="https://www.facebook.com/w.abrar"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+  </div>
+  
+    <div class="clear"></div>
+  </div>
+</div>
 
 <%- include('./utils/contactus.ejs') %>
  

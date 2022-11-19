@@ -5,6 +5,7 @@ const messageRoute = require('./messageRoute')
 const policyRoute = require('./policyRoute')
 const aboutRoute = require('./aboutRoute')
 const orderRoute = require('./orderRoute')
+const liveTv = require('./live-tv')
 const {homePageGetController,aboutPageGetController} = require("../controllers/homeController")
 
 
@@ -37,6 +38,10 @@ const routes = [
     {
         path: "/order",
         handler: orderRoute
+    },
+    {
+        path: "/live-tv",
+        handler: liveTv
     },
     {
         path: "/",
