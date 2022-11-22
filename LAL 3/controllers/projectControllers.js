@@ -8,15 +8,15 @@ exports.renderAllProjects = async(req, res)=>{
   let sql  ='select * from projects limit 8'
   console.log(ariaInUrl);
   if(ariaInUrl){
-    sql = `select * from projects where address='${ariaInUrl}' limit 8`
+    sql = `select * from projects where address='${ariaInUrl}' limit 10`
   }
 
   if(type){
-    sql = `select * from projects where status ='${type}' limit 8`
+    sql = `select * from projects where status ='${type}' limit 10`
   }
 
   if(ariaInUrl && type){
-    sql = `select * from projects where status ='${type}' and address='${ariaInUrl}' limit 8`
+    sql = `select * from projects where status ='${type}' and address='${ariaInUrl}' limit 10`
   }
 
   const [aria,ariaFeilds] = await db.query("select address from projects")

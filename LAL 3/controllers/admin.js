@@ -98,13 +98,19 @@ exports.createPostPostController = async (req, res)=>{
 
 
 exports.allPostsGetController = async (req, res)=>{
+  let currentPage = parseInt(req.query.page) || 1
+  let itemPerPage = 15
 
   let status = req.query.status 
-  let sql = "select id,title,thumbnail,status from projects"
+  let sql = `select count(*) as count from projects;select id,title,thumbnail,status from projects limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
   if(status){
-    sql = `select id,title,thumbnail,status from projects where status = '${status}'`
+    sql = `select count(*) as count from projects;select id,title,thumbnail,status from projects where status = '${status}' limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
   }
   const [rows, fields] = await db.query(sql);
 
-  res.render("./admin/posts", {projects: rows})
+  let totalMessage = rows[0]
+  let totalPage = Math.ceil(totalMessage[0].count / itemPerPage)
+  
+
+  res.render("./admin/posts", {projects: rows[1],currentPage,itemPerPage,totalPage})
 }

@@ -47,16 +47,22 @@ exports.orderPostController = async (req, res, next) => {
 
 
 exports.adminOrderGetController = async (req,res,next) => {
+  let currentPage = parseInt(req.query.page) || 1
+  let itemPerPage = 15
+
   let respond = req.query.respond
   let sql = ''
   if(respond == 'true'){
-    sql = "select * from orders where respond = '1'"
+    sql = `select count(*) as count from orders;select * from orders where respond = '1' limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
   }else{
-    sql = "select * from orders where respond = '0'"
+    sql = `select count(*) as count from orders;select * from orders where respond = '0' limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
   }
   try {
     const [rows, fields] = await db.query(sql);
-    res.render("admin/pages/order/orders",{orders:rows})
+    let totalOrder = rows[0]
+    let totalPage = Math.ceil(totalOrder[0].count / itemPerPage)
+
+    res.render("admin/pages/order/orders",{orders:rows[1],currentPage,itemPerPage,totalPage})
   } catch (error) {
     next(error)
   }

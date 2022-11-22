@@ -32,6 +32,12 @@ const routes = [
         handler: policyRoute
     },
     {
+        path: "/contact",
+        handler:(req,res,next)=>{
+            res.render('pages/about/contact',{title:'Contact us',flashMessage:''})
+        }
+    },
+    {
         path: "/message",
         handler: messageRoute
     },

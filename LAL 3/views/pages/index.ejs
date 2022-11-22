@@ -4,7 +4,6 @@
   .main-landing{
     position: relative;
     overflow: hidden;
-    border: 5px solid red;
   }
 
   .main-landing img {
@@ -15,6 +14,7 @@
     border-width: 0px;
     border-radius: 0px;
     filter: none;
+    object-fit: cover;
 }
  #radiul_menu{
   position: absolute;
@@ -26,17 +26,101 @@
  }
 
 </style>
-<div class="main-landing">
-  <div class="overlay">
-    <img src="/images/landing.jpg" alt="Landscape" width="100%">
-  </div>
-  <div id="radiul_menu" class="menu">
-    <ul class="p-0">
-      <li class="p-0"><span>Trip</span></li>
-      <li class="p-0"><span>Service</span></li>
-      <li class="p-0"><span>Route</span></li>
-      <li class="p-0"><span>Stop</span></li>
-    </ul>
+
+
+<div class="container">
+  <div class="row"  style="min-height: 80vh;">
+   
+    <div class="col-sm-12 col-md-6 d-flex align-items-center">
+      <div class="mx-3">
+        <style>
+          .gradient-custom {
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all .2s;
+          }
+
+          .gradient-custom-btn {
+    /* fallback for old browsers */
+    background: #667eea;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(102,126,234,0.5), rgba(118,75,162,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(102,126,234,0.5), rgba(118,75,162,0.5))
+  }
+        </style>
+        <h2 class="display-5  fw-bold gradient-custom">Landscape Alliance Ltd</h2>
+        <p>Landscape Alliance Limited is a high end real estate and <br> construction company in Bangladesh. We see things holistically, backed by years of experience.</p>
+        <button class="btn gradient-custom btn-primary">See more</button>
+      </div>
+    </div>
+
+    
+    <div class="col-sm-12 col-md-6 building">
+      <div>
+        <div class="container-bulding">
+          <div class="topThing animated bounceInDown">
+            <div class="stick3"></div>
+            <div class="stick4"></div>
+          </div>
+          <div class="name animated bounceInDown"><div class="psl">LANDSCAPAE</div><div class="s"></div><div class="s2"></div><div class="bg"></div></div>
+          <div class="sticks animated bounceInDown">
+          <div class="stick"></div>
+          <div class="stick stick2"></div></div>
+          <div class="wall">
+            <div class="brick brick1"></div>
+            <div class="brick brick2"></div>
+            <div class="window window1">
+              <div class="line line1"></div>
+              <div class="line line2"></div>
+              <div class="wShadow"></div>
+              <div class="wShadow2"></div>
+              <div class="light"></div>
+              <div class="light2"></div>
+            </div>
+            <div class="wBorder wBorder1"></div>
+            <div class="brick brick3"></div>
+            <div class="brick brick4"></div>
+            <div class="brick brick5"></div>
+            <div class="brick brick6"></div>
+            <div class="window window2">
+              <div class="line line1"></div>
+              <div class="line line2"></div>
+              <div class="wShadow"></div>
+              <div class="wShadow2"></div>
+              <div class="light"></div>
+              <div class="light2"></div>
+            </div>
+            <div class="wBorder wBorder2"></div>
+            <div class="brick brick7"></div>
+            <div class="brick brick8"></div>
+            <div class="wBorder doorBorder"></div>
+            <div class="door">
+              <div class="doorLine"></div>
+              <div class="circle_b"></div>
+              <div class="circle2"></div>
+              <div class="shadow"></div>
+            </div>
+            
+            <div class="brick brick9"></div>
+            <div class="brick brick10"></div>
+            <div class="brick brick11"></div>
+            <div class="brick brick12"></div>
+          </div>
+          <div class="floor">
+            <div class="floor3"></div>
+            <div class="floor1"></div>
+            <div class="floor2"></div>
+            <div class="floor4"></div>
+            <div class="floor5"></div>
+          </div>
+        </div>
+        </div>
+      
+    </div>
   </div>
 </div>
 

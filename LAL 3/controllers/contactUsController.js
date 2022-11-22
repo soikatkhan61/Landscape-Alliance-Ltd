@@ -23,15 +23,21 @@ exports.contactUsPostController = async(req,res,next) =>{
 
 
 exports.msgGetContrller = async(req,res,next) =>{
+    let currentPage = parseInt(req.query.page) || 1
+    let itemPerPage = 15
     try {
         let respond = req.query.responded
-        let sql = 'select * from contact order by id desc'
+        let sql = `select count(*) as count from contact;select * from contact order by id desc limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
         if(respond){
-            sql = `select * from contact where respond = '${respond}' order by id desc`
+            sql = `select count(*) as count from contact;select * from contact where respond = '${respond}' order by id desc limit ${((itemPerPage * currentPage) - itemPerPage)}, ${itemPerPage}`
         }
-        const [rows,fields] =await db.query(sql)
 
-      res.render("admin/pages/messages",{msgs:rows})
+        const [rows,fields] =await db.query(sql)
+       
+        let totalMessage = rows[0]
+        let totalPage = Math.ceil(totalMessage[0].count / itemPerPage)
+        
+        res.render("admin/pages/messages",{msgs:rows[1],currentPage,itemPerPage,totalPage})
     } catch (error) {
         next(error)
     }
