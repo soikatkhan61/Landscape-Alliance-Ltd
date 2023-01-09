@@ -35,7 +35,7 @@
           <% projects.forEach(project => { %>
             <tr>
               <td class="px-3"><%= project.id %> </td>
-              <td><a href="/project/<%= project.id %> "><%= project.title %></a></td>
+              <td><a href="/project/<%= project.slug %> "><%= project.title %></a></td>
               <td>
                 <% if(project.thumbnail){ %>
                   <img style="width: 100px; height: 100px" src="http://localhost:3000/upload/projects/<%= project.thumbnail %>" alt="">

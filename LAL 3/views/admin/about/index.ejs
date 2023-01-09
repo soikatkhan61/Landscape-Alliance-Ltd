@@ -1,0 +1,38 @@
+<%- include("../partials/header") %> 
+
+<%- include("../partials/sidebar") %>
+
+<div class="container-fluid py-5" style="background: #eee;min-height: 90vh;">
+    <div class="container" style="padding-top: 26px;">
+        <% if(data.length == 0){ %> 
+            <h4 class="text-center">No data</h4>
+            <div>
+                <a href="/admin/about/add-section" class="btn btn-primary">Add Section</a>
+            </div>
+        <% }else{ %> 
+            <div class="my-3">
+                <a href="/admin/about/add-section" class="btn btn-primary">Add Section</a>
+            </div>
+            <table class="table-striped">
+                <tr style="background-color: black; color:white">
+                  <th class="px-3">title</th>
+                  <th>body</th>
+                  <th>Action</th>
+                </tr>
+      
+                <% for(let m of data) {%> 
+                  <tr>
+                      <td class="px-3"><%= m.title %> </td>
+                      <td><%= m.body ? 'Descriptionn Added' : 'Not Found' %> </td>
+                      <td>
+                        <a class="btn btn-sm btn-warning" href="/admin/about/add-section?edit=true&id=<%= m.id %>">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="/admin/about/add-section?delete=true&id=<%= m.id %>" onclick="return confirm('Are you sure?')">Delete</a>
+                      </td>                        
+                    </tr>
+                <% }%> 
+              </table>
+        <% } %> 
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

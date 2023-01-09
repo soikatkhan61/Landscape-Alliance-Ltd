@@ -12,6 +12,8 @@ const {uploadPostImagesController} = require('../api/controllers/postControllers
 
 const {renderAdminDashboard} = require('../controllers/admin/dashboardController')
 
+const {aboutPageEdit,renderAddSection,addSectionPost,companyInfo,companyInfoPost} = require('../controllers/admin/aboutController')
+
 const {msgGetContrller,singleMsgGetContrller,deleteMsgGetContrller,respondMessage} = require("../controllers/contactUsController")
 const {adminOrderGetController,respondController,deleteOrdersController} = require("../controllers/orderController")
 
@@ -28,6 +30,13 @@ router.get("/messages/respond",isAuthenticated, respondMessage)
 router.get("/messages/:msg_id",isAuthenticated, singleMsgGetContrller)
 router.get("/messages/delete/:msg_id",isAuthenticated, deleteMsgGetContrller)
 router.get("/messages",isAuthenticated, msgGetContrller)
+
+router.get("/about",isAuthenticated, aboutPageEdit)
+router.get("/about/add-section",isAuthenticated, renderAddSection)
+router.post("/about/add-section",isAuthenticated, addSectionPost)
+
+router.get("/info",isAuthenticated, companyInfo)
+router.post("/info",isAuthenticated, companyInfoPost)
 
 
 router.get("/orders/respond",isAuthenticated, respondController)

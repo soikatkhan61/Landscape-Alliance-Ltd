@@ -124,7 +124,7 @@
           <% }else{ %> 
             <% for(let p of projects){ %> 
                 <div class="col-lg-4 col-md-6">
-                  <a href="/project/<%= p.id %>" class="text-dark">
+                  <a href="/project/<%= p.slug %>" class="text-dark">
                   <div class="<%= p.status ? 'ribbon' : '' %>  card h-100">
                     <% if(p.status){ %>
                       <% if(p.status == 'Completed') {%>  

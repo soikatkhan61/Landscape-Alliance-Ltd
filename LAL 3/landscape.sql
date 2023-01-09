@@ -49,6 +49,10 @@ CREATE TABLE `projects` (
   `updatedAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE projects
+ADD COLUMN  slug varchar(200)
+AFTER       id;
+
 --
 -- Indexes for dumped tables
 --

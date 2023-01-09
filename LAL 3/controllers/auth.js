@@ -23,6 +23,7 @@ const oAuth2Client = new google.auth.OAuth2(
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 exports.loginGetController = async(req, res, next) => {
+  console.log(await bcrypt.hash("11111", 11));
   res.render("pages/auth/login", {
     title: "Login here",
     error: {},
@@ -335,7 +336,7 @@ console.log(userEmail,verify_id)
 };
 
 exports.changePasswordGetController = async (req, res, next) => {
-  res.render("user/pages/change_password", {
+  res.render("pages/auth/change_password", {
     title: "Change Password",
     error: "",
     notMatched: false,
@@ -348,7 +349,7 @@ exports.changePasswordPostController = async (req, res, next) => {
 
   let errors = validationResult(req).formatWith(errorFormatter);
   if (!errors.isEmpty()) {
-    return res.render("user/pages/change_password", {
+    return res.render("pages/auth/change_password", {
       title: "Change Password",
       error: errors.mapped(),
       notMatched: false,
@@ -357,7 +358,7 @@ exports.changePasswordPostController = async (req, res, next) => {
 
   try {
     if (new_password2 !== new_password1) {
-      return res.render("user/pages/change_password", {
+      return res.render("pages/auth/change_password", {
         title: "Change Password",
         error: errors.mapped(),
         notMatched: "New Password and Confirm password is not matched",
@@ -369,7 +370,7 @@ exports.changePasswordPostController = async (req, res, next) => {
         return next(err);
       } else if (match === false) {
         console.log("i am here");
-        return res.render("user/pages/change_password", {
+        return res.render("pages/auth/change_password", {
           title: "Change Password",
           error: errors.mapped(),
           notMatched: "Old password is not valid",
@@ -384,13 +385,10 @@ exports.changePasswordPostController = async (req, res, next) => {
             } else {
               if (data.changedRows == 1) {
                 req.flash("success", "Password Changed Succefully,Login Now!");
-                req.session.destroy((err) => {
-                  if (err) {
-                    return next(err);
-                  }
-                  res.clearCookie("token");
-                  res.redirect("/auth/login");
-                  res.end();
+                return res.render("pages/auth/change_password", {
+                  title: "Change Password",
+                  error: errors.mapped(),
+                  notMatched: 'success',
                 });
               } else {
                 res

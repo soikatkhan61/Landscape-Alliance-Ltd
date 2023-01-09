@@ -11,7 +11,7 @@
             <h6 class="text-center mb-0 mx-2">Create Project</h6>
             <div>
               <% if(project){ %> 
-                <a  href="/project/<%= project.id %>" target="_blank"  class="btn btn-success"><i class='bx bx-show mx-1'></i> <span>view</span></a>
+                <a  href="/project/<%= project.slug %>" target="_blank"  class="btn btn-success"><i class='bx bx-show mx-1'></i> <span>view</span></a>
               <% } %> 
               
               <button type="submit" class="btn btn-<%= project ? "warning": "primary" %>" style="min-width: 150px;"><%= project? "Update": "Publish" %> </button>
@@ -155,13 +155,18 @@
 
             <div id="gallery-preview" class="card-deck mt-3" style="display: flex;">
               <% if(project){ %>
-                <% projectImages.forEach(img => { %>
-                  <div class="card">
-                    <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
-
-                    <a href="/project/delete-img?post=<%= project.id %> &src=<%= img %>" class="btn mt-2 rounded-0" style="background-color: rgb(232, 44, 44);color:white" >Delete</a>
-                  </div>`
-                <% }) %> 
+                <div class="row">
+                  <% projectImages.forEach(img => { %>
+                    <div class="col">
+                      <div class="card">
+                        <img style="height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
+    
+                        <a href="/project/delete-img?post=<%= project.id %> &src=<%= img %>" class="btn mt-2 rounded-0" style="background-color: rgb(232, 44, 44);color:white" >Delete</a>
+                      </div>
+                    </div>
+                  <% }) %> 
+                </div>
+                
               <% } %> 
             </div>
           </div>
@@ -188,8 +193,8 @@
     for(file of files){
       src = URL.createObjectURL(file);
       cardElements = ` <div class="card">
-              <img style="width:200px; height: 200px;" class="card-img-top" src="${src}" alt="Card image cap">
-              <a class="btn-sm btn-danger">Delete</a>
+              <img style="height: 200px;" class="card-img-top" src="${src}" alt="Card image cap">
+             
             </div>`
 
       gelleryPreview.innerHTML += cardElements;
@@ -203,3 +208,11 @@
 
 
 <%- include("./partials/footer") %>
+
+<script>
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      height: 400
+    });
+  });
+</script>

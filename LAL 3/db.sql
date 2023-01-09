@@ -18,3 +18,17 @@ CREATE TABLE IF NOT EXISTS contact (
     respond ENUM('yes','no'),
     createdAt TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 );
+
+CREATE TABLE IF NOT EXISTS profiles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    slug varchar(200) not null;
+    title varchar (50) not null,
+    body VARCHAR(4000)
+);
+
+CREATE TABLE IF NOT EXISTS info (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    location varchar(500),
+    mail varchar (100),
+    phone VARCHAR(150)
+);

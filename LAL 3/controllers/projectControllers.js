@@ -34,7 +34,7 @@ exports.renderAllProjects = async(req, res)=>{
 exports.singleProjectGetController = async(req, res)=>{
   const id = req.params.id;
 
-  const [rows, fields] = await db.query("select * from projects where id=?", [id]);
+  const [rows, fields] = await db.query("select * from projects where slug=?", [id]);
   const projectImages = JSON.parse(rows[0].gallery)
   
   res.render('pages/single-project', {project: rows[0],title: rows[0].title, projectImages});

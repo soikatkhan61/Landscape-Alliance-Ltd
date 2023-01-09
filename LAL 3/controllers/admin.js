@@ -2,13 +2,14 @@ const db = require('../config/db')
 const cheerio = require('cheerio')
 const fs = require('fs')
 const path = require('path')
+const  slugify = require('slugify')
 
 exports.createPostGetController = (req, res)=>{
   res.render("./admin/create-post", {project: undefined});
 }
 
 exports.createPostPostController = async (req, res)=>{
-  console.log("edit here")
+  
   const {title, description, status, google_map,youtube_video, address, apartment_size, road_size, parking, land_size, units, floors, handover_time} = req.body;
   const edit = req.query?.edit?? false;
   const id = req.query?.id;
@@ -43,8 +44,9 @@ exports.createPostPostController = async (req, res)=>{
     projectImagesUrl.push(file.filename);
   })
 
+  let slug = slugify(title)
 
-  let sql = `insert into projects (title, description, thumbnail, gallery, post_images, status, google_map,youtube_video, address, apartment_size, road_size, parking, land_size, units, floors, handover_time) values('${title}', '${$('body').html()}', '${thumbnail}', '${JSON.stringify(projectImagesUrl)}', '${JSON.stringify(postImages)}', '${status}', '${google_map}', '${youtube_video}', '${address}', '${apartment_size}', '${road_size}', '${parking}', '${land_size}', '${units}', '${floors}', '${handover_time}')`;
+  let sql = `insert into projects (slug,title, description, thumbnail, gallery, post_images, status, google_map,youtube_video, address, apartment_size, road_size, parking, land_size, units, floors, handover_time) values('${slug}','${title}', '${$('body').html()}', '${thumbnail}', '${JSON.stringify(projectImagesUrl)}', '${JSON.stringify(postImages)}', '${status}', '${google_map}', '${youtube_video}', '${address}', '${apartment_size}', '${road_size}', '${parking}', '${land_size}', '${units}', '${floors}', '${handover_time}')`;
 
   if(edit){
     const [rows, field] = await db.query(`select thumbnail, gallery, post_images from projects where id=${id}`)

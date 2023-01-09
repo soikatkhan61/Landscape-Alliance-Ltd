@@ -1,0 +1,31 @@
+<%- include("../partials/header") %> 
+
+<%- include("../partials/sidebar") %>
+
+<div class="container-fluid bg-light py-5" style="min-height: 90vh;">
+    <div class="container" style="padding-top: 26px;">
+        <form action="/admin/info<%= data.length !== 0 ? '?edit=true' : '?create=true' %>" method="post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Location</label>
+              <textarea rows="5"  value="" type="text" name="location"  class="form-control" required id="exampleInputEmail1"><%= data.length !== 0 ? data[0].location : '' %></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Mail</label>
+                <input  value="<%= data.length !== 0 ? data[0].mail : '' %>" type="email" name="mail"  class="form-control" required id="exampleInputEmail1">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Phone No</label>
+                <textarea rows="3" value="" type="text" name="phone"  class="form-control" required id="exampleInputEmail1"><%= data.length !== 0 ? data[0].phone : '' %></textarea>
+            </div>
+
+           
+
+            <button type="submit" class="btn btn-<%= data.length !== 0 ? 'warning' : 'primary' %>"><%= data.length !== 0 ? 'Update' : 'Submit' %></button>
+          </form>
+    </div>
+</div>
+
+
+<%- include("../partials/footer") %>
