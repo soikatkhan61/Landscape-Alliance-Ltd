@@ -1,0 +1,516 @@
+<%- include('../partials/head.ejs') %>
+
+<style>
+  .main-landing{
+    position: relative;
+    overflow: hidden;
+  }
+
+  .main-landing img {
+    margin: 0px;
+    z-index: auto;
+    padding: 0px;
+    max-height: 90vh;
+    border-width: 0px;
+    border-radius: 0px;
+    filter: none;
+    object-fit: cover;
+}
+ #radiul_menu{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  z-index: 100;
+ }
+
+</style>
+
+
+
+<style>
+  .cover{
+    background-image:url('/images/cover.jpg');
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    object-fit: cover;
+  }
+</style>
+
+<div class="cover">
+  <div class="container">
+    <div class="row"  style="min-height: 95vh;">
+     
+
+  
+      
+      <div class="col-sm-12 col-md-6 building">
+        <div>
+          <div class="container-bulding">
+            <div class="topThing animated bounceInDown">
+              <div class="stick3"></div>
+              <div class="stick4"></div>
+            </div>
+            <div class="name animated bounceInDown"><div class="psl">LANDSCAPAE</div><div class="s"></div><div class="s2"></div><div class="bg"></div></div>
+            <div class="sticks animated bounceInDown">
+            <div class="stick"></div>
+            <div class="stick stick2"></div></div>
+            <div class="wall">
+              <div class="brick brick1"></div>
+              <div class="brick brick2"></div>
+              <div class="window window1">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="wShadow"></div>
+                <div class="wShadow2"></div>
+                <div class="light"></div>
+                <div class="light2"></div>
+              </div>
+              <div class="wBorder wBorder1"></div>
+              <div class="brick brick3"></div>
+              <div class="brick brick4"></div>
+              <div class="brick brick5"></div>
+              <div class="brick brick6"></div>
+              <div class="window window2">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="wShadow"></div>
+                <div class="wShadow2"></div>
+                <div class="light"></div>
+                <div class="light2"></div>
+              </div>
+              <div class="wBorder wBorder2"></div>
+              <div class="brick brick7"></div>
+              <div class="brick brick8"></div>
+              <div class="wBorder doorBorder"></div>
+              <div class="door">
+                <div class="doorLine"></div>
+                <div class="circle_b"></div>
+                <div class="circle2"></div>
+                <div class="shadow"></div>
+              </div>
+              
+              <div class="brick brick9"></div>
+              <div class="brick brick10"></div>
+              <div class="brick brick11"></div>
+              <div class="brick brick12"></div>
+            </div>
+            <div class="floor">
+              <div class="floor3"></div>
+              <div class="floor1"></div>
+              <div class="floor2"></div>
+              <div class="floor4"></div>
+              <div class="floor5"></div>
+            </div>
+          </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if(projects.length>0){ %> 
+  <div class="swiper-container">
+    <style>
+      .swiper-wrapper img{
+        max-height: 400px;
+      }
+    </style>
+    <div class="swiper-wrapper">
+      
+      <% for(let p of projects){ %> 
+        <div class="swiper-slide">
+          <a href="/project/<%= p.id %> ">
+            <img src="/upload/projects/<%= p.thumbnail %>">
+          </a>
+         
+        </div>
+      <% }%> 
+      
+    
+    </div>
+    <div class="swiper-button-prev myArrow"></div>
+    <div class="swiper-button-next myArrow"></div>
+</div>
+<% } %> 
+
+  <div  >
+
+    <div class="container btn-container" style="min-height: 200px;background-color: #10122d;border-radius: 45px 0px 45px 0px;">
+      <div class="btns"><a href="/project?type=Completed">Completed</a></div>
+      <div class="btns"><a href="/project?type=Ongoing">Ongoing</a></div>
+      <div class="btns"><a href="/project?type=Upcoming">Upcoming</a></div>
+    </div>
+
+  <div class="py-4 mt-4">
+    <div>
+      <center>
+        <h3 class="text-danger">Hotline for any Queries </h3>
+      </center>
+      <center>
+        <h4> <i class="fa-solid text-danger fa-mobile"></i>  <a href="tel:01712000384" class="text-dark">01712000384</a></h4>
+      </center>
+
+    </div>
+  </div>
+  <div class="py-4">
+    <div class="container">
+      <center>
+        <h1 class="text-dark mb-2">FEATURED PROJECTS</h1>
+      </center>
+      <div>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+
+          <% if(projects.length == 0){ %> 
+            <h4 class="text-center">No projects</h4>
+          <% }else{ %> 
+            <% for(let p of projects){ %> 
+                <div class="col-lg-4 col-md-6">
+                  <a href="/project/<%= p.slug %>" class="text-dark">
+                  <div class="<%= p.status ? 'ribbon' : '' %>  card h-100">
+                    <% if(p.status){ %>
+                      <% if(p.status == 'Completed') {%>  
+                        <span class="ribbon3 ribonred"><%= p.status %> </span>
+                      <% }else if(p.status == 'Ongoing'){%>  
+                        <span class="ribbon3"><%= p.status %> </span>
+                      <% }else if(p.status == 'Upcoming'){%>  
+                        <span class="ribbon3 ribonupcoming"><%= p.status %> </span>
+                      <% }%>  
+                    <% } %> 
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                      <img src="/upload/projects/<%= p.thumbnail %>" style="max-height: 400px;max-width:auto" class="card-img-top" alt="<%= p.title %> photo" />
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                      <h5><%= p.title %> </h5>
+                      <p><%= p.address %></p>
+                    </div>
+                  </div>
+                </a>
+                </div>
+            <% } %> 
+          <% } %> 
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="my-3">
+      <center><button class="border py-2 px-3 bg-success"><a href="/project" class="text-light">Show more projects</a> </button></center>
+    </div>
+    
+    
+  </div>
+
+  <div class="d-flex justify-content-center py-5">
+    <div class="counter_wrapper" id="counter_wrapper">
+      <div class="counter_container">
+        <i class="fa-solid fa-building"></i>
+        <span class="num" data-val="<%= completed[0].total %>">000</span>
+        <span class="text">Project Delivered</span>
+      </div>
+      <div class="counter_container">
+        <i class="fas fa-smile-beam"></i>
+        <span class="num" data-val="340">000</span>
+        <span class="text">Happy Customers</span>
+      </div>
+      <div class="counter_container">
+        <i class="fas fa-list"></i>
+        <span class="num" data-val="1">000</span>
+        <span class="text">Branch</span>
+      </div>
+      <div class="counter_container">
+        <i class="fas fa-star"></i>
+        <span class="num" data-val="280">000</span>
+        <span class="text">Five Stars</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-5 bg-dark">
+  <h1 class="text-light text-center">WHY LANDSCAPAE ALLIANCE LTD?</h1>
+</div>
+
+
+<div style="background-color: #fff;">
+<div class="container py-5">
+  <div class="row">
+    <div class="col">
+      <div class="main-timeline">
+        <div class="timeline">
+          <a href="#" class="timeline-content">
+            <span class="timeline-year">2015</span>
+            <div class="timeline-icon">
+             
+            </div>
+            <div class="content">
+              <h3 class="title">Started Journey</h3>
+              <p class="description">
+                Landscape started its Journey, project at Banasree & Moghbazar to deliver era of architecture value.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="timeline">
+          <a href="#" class="timeline-content">
+            <span class="timeline-year">2018</span>
+            <div class="timeline-icon">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="content">
+              <h3 class="title">First Handover</h3>
+              <p class="description">
+                Handover first two Projects, To change the motto of the business,  started diagram with niche clients in specific areas
+              </p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="timeline">
+          <a href="#" class="timeline-content">
+            <span class="timeline-year">2021-22</span>
+            <div class="timeline-icon">
+              <i class="fa fa-edit" aria-hidden="true"></i>
+            </div>
+            <div class="content">
+              <h3 class="title">Projects</h3>
+              <p class="description">
+                Hand over several projects at bashundhara and Uttara, setup a new era of modern architecture, and Finishing materials  to setup each apartment with uniqueness.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+</div> 
+
+
+
+<!-- Modal -->
+<div class="modal top fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
+  <div class="modal-dialog  ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal_body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="board-of-directors">
+
+  <h3 class="text-center mt-5 text-primary fw-bold display-6">Board of Directors</h3>
+  <div class="cards-container">
+
+    <div class=" cards card-two">
+      <header>
+        <div class="avatar">
+          <img src="/images/bibhas.png" alt="Bibhash Das" />
+        </div>
+      </header>
+      
+      <h3 class="member_name">Bibhash Das</h3>
+      <p class="text-center pb-0 fw-bold">Head of Marketing</p>
+      <div class="desc">
+        Under his leadership, Landscape strives to strengthen its strategic marketing and branding
+        <br>
+        <a style="cursor: pointer;" class="fw-bold readmoreBtn" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Read More</a>
+      </div>
+      <div class="contacts d-flex justify-content-center">
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <div class="clear"></div>
+      </div>
+      
+      <footer>
+        <p>
+          <a href="https://www.facebook.com/profile.php?id=100080396170073"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+    </div>
+    
+    <div class="cards card-one">
+      <header>
+        <div class="avatar">
+          <img src="/images/asfaq.png" alt="Ashfaqur Rahman" />
+        </div>
+      </header>
+  
+      <h3 class="member_name">Ashfaqur Rahman</h3>
+      <p class="text-center pb-0 fw-bold">Managing Director</p>
+      <div class="desc">
+        A distinguished and perceptive entrepreneur, Ashfaqur Rahman , the founder promoter of Landscape
+        <br>
+        <a style="cursor: pointer;"  class="fw-bold readmoreBtn" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Read More</a>
+      </div>
+      <div class="contacts d-flex justify-content-center">
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <div class="clear"></div>
+      </div>
+
+      <footer>
+        <p>
+          <a href="https://www.facebook.com/ashfaqur.rahman1"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+    </div>
+  
+    <div class=" cards card-two">
+    <header>
+      <div class="avatar">
+        <img src="/images/waheduzzaman.jpg" alt="Waheduzzaman Abrar" />
+      </div>
+    </header>
+    
+    <h3 class="member_name">Waheduzzaman Abrar</h3>
+    <p class="text-center pb-0 fw-bold">Head of Admin & Accounts</p>
+    <div class="desc">
+      With more than five four of administration experience in the real estate sector
+      <br>
+      <a style="cursor: pointer;"  class="fw-bold readmoreBtn" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Read More</a>
+    </div>
+    <div class="contacts d-flex justify-content-center">
+      <a href=""><i class="fa fa-envelope"></i></a>
+      <div class="clear"></div>
+    </div>
+    
+     <footer>
+        <p>
+          <a href="https://www.facebook.com/w.abrar"><i class="fab fa-facebook"></i></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></i></a>
+          <a href=""><i class="fab fa-twitter"></i></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </p>
+      </footer>
+  </div>
+  
+    <div class="clear"></div>
+  </div>
+</div>
+
+<%- include('./utils/contactus.ejs') %>
+ 
+
+
+
+  <script src='https://unpkg.com/swiper/swiper-bundle.js'></script>
+  <script>
+    const inputs = document.querySelectorAll(".input");
+
+    function focusFunc() {
+      let parent = this.parentNode;
+      parent.classList.add("focus");
+    }
+
+    function blurFunc() {
+      let parent = this.parentNode;
+      if (this.value == "") {
+        parent.classList.remove("focus");
+      }
+    }
+
+    inputs.forEach((input) => {
+      input.addEventListener("focus", focusFunc);
+      input.addEventListener("blur", blurFunc);
+    });
+
+    //counter viewport select
+
+    function startCount(){
+      let valueDisplays = document.querySelectorAll(".num");
+      let interval = 800;
+      valueDisplays.forEach((valueDisplay) => {
+        let startValue = 0;
+        let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+        let duration = Math.floor(interval / endValue);
+        let counter = setInterval(function () {
+          startValue += 1;
+          valueDisplay.textContent = startValue+"+";
+          if (startValue == endValue) {
+            clearInterval(counter);
+          }
+        }, duration);
+      });
+    }
+
+
+    let counter_wrapper = document.getElementById('counter_wrapper')
+    let counted = 0
+    var observer = new IntersectionObserver(function(entries) {
+    if(entries[0].isIntersecting === true)
+        if(counted < 2){
+          startCount()
+          counted++
+        }
+        console.log(counted)
+    }, { threshold: [1] });
+
+    observer.observe(counter_wrapper);
+
+
+    let swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      coverflowEffect: {
+        rotate: 40,
+        stretch: 25,
+        depth: 200,
+        modifier: 1,
+        slideShadows: true,
+      },
+    autoplay:{
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+       navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      
+    });
+
+
+
+    let readmoreBtn = document.getElementsByClassName('readmoreBtn')
+    let modal_title = document.getElementById('modal-title')
+    let member_name = document.getElementsByClassName('member_name')
+    let modal_body = document.getElementById('modal_body')
+
+    let data = ['Under his leadership, Landscape strives to strengthen its strategic marketing and branding, enhance operational efficiencies, and incorporate state-of-the-art technologies and best practices. Moreover, his focus on quality and driving product innovation by incorporating modern features into Landscape projects continue to truly differentiate it from competitors, ensuring it remains unparalleled in design and quality.Apart from his active involvement in the management and executive decision-making of the company','A distinguished and perceptive entrepreneur, Ashfaqur Rahman , the founder promoter of Landscape, opts to do business by providing world-class products and services in Bangladesh. With his leadership and extensive business knowledge, Landscape drives forward to not only provide superior quality products and services but to demonstrate unparalleled foresight by developing iconic projects which are the epitome of modern architecture, safe, functional and comfortable living.','With more than five four of administration experience in the real estate sector, apart from his role in core management, Waheduzzaman monitors and supervises the big team of management and accounts , customer care, logistics and brand communication to explore new customers and render continuous value added services to the existing customers of LAL. He also assists the top management on various issues regarding strategy making and project finalization.']
+    
+    for(let i=0;i<readmoreBtn.length;i++){
+      readmoreBtn[i].addEventListener('click',(e)=>{
+        modal_title.innerText = member_name[i].innerText
+        modal_body.innerText = data[i]
+        console.log(data[i]);
+      })
+    }
+
+  </script>
+
+  <%- include('../partials/footer.ejs') %>
+    </body>
+
+    </html>

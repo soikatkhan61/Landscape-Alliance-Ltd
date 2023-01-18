@@ -1,0 +1,94 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #10122d;">
+    <!-- Container wrapper -->
+    <div class="container">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="/">
+        <img src="/images/logo.png" height="40" alt="" class="img-fulid">
+      </a>
+  
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <style>
+        .custom_navbar ul li a{
+          font-size: 18px!important;
+        }
+      </style>
+      <!-- Collapsible wrapper -->
+      <div class="collapse custom_navbar navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              About
+            </a>
+            <ul id="about_nav" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+            </ul>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Creations
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="/project?type=Ongoing">Ongoing</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/project?type=Completed">Completed</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/project?type=Upcoming">Upcoming</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Laisons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/order">Book Yours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4 fw-bold" style="color: rgb(48, 184, 247);" href="/contact" >Contact</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->

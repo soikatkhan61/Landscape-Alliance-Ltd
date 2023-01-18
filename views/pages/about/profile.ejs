@@ -1,0 +1,19 @@
+<%- include('../../partials/head.ejs') %>
+<div class="container-fluid py-5 bg-light">
+    <div class="container mb-5">
+        <% if(data.length == 0){ %> 
+            <p class="text-center">Not data</p>
+        <% }else{ %> 
+        
+       <h2 class="display-6 fw-bold text-primary"><%= data[0].title %> </h2>
+       <hr>
+       <div>
+        <%- data[0].body %> 
+       </div>
+    </div>
+    <% }%> 
+    <div class="mt-5">
+        <%- include("../utils/contactus") %>
+    </div>
+</div>
+<%- include("../../partials/footer") %>

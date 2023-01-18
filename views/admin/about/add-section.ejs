@@ -1,0 +1,42 @@
+<%- include("../partials/header") %> 
+
+<%- include("../partials/sidebar") %>
+
+<div class="container-fluid bg-light py-5" style="min-height: 90vh;">
+    <div class="container" style="padding-top: 26px;">
+        <form action="/admin/about/add-section<%= data ? '?edit=true&id='+data[0].id : '' %> " method="post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Title</label>
+              <input value="<%= data ? data[0].title : '' %>" type="text" name="title"  class="form-control" required id="exampleInputEmail1">
+            </div>
+
+            <div class="mb-3">
+                <textarea id="summernote" name="description" required><%= data ? data[0].body : '' %></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-<%= data ? 'warning' : 'success' %>"><%= data ? 'Update' : 'Submit' %></button>
+          </form>
+    </div>
+</div>
+
+
+<%- include("../partials/footer") %>
+<script>
+    $(document).ready(function () {
+      $('#summernote').summernote({
+        height: 400,
+        toolbar: [
+    ['style', ['style']],
+    ['font', ['bold', 'italic', 'underline', 'clear']],
+    ['fontname', ['fontname']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']],
+    ['table', ['table']],
+    ['insert', ['link', 'hr']], // remove insert image button
+    ['view', ['fullscreen', 'codeview']],
+    ['help', ['help']]
+  ]
+      });
+    });
+  </script>

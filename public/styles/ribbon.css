@@ -1,0 +1,60 @@
+.ribbon {
+    height: 100px;
+    position: relative;
+    margin-bottom: 30px;
+    background-size: cover;
+    text-transform: uppercase;
+  }
+
+  .ribbon3 {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    position: absolute;
+    left: -8px;
+    top: 30px;
+    color:white;
+    background: #149279;
+    z-index: 1;
+  }
+  .ribonred{
+    background: #e90c1f;
+  }
+  .ribonupcoming{
+    background: #eec925;
+  }
+  .ribbon3:before, .ribbon3:after {
+    content: "";
+    position: absolute;
+  }
+  .ribbon3:before {
+    height: 0;
+    width: 0;
+    top: -8.5px;
+    left: 0.1px;
+    border-bottom: 9px solid black;
+    border-left: 9px solid transparent;
+  }
+  .ribbon3:after {
+    height: 0;
+    width: 0;
+    right: -14.5px;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 15px solid #149279;
+  }
+  .ribonred:after{
+    border-left: 15px solid #e90c1f;
+  }
+  .ribonupcoming:after{
+    border-left: 15px solid #eec925;
+  }
+
+  :root {
+    --blue: #2584EE;
+    --dark-blue: #134D8D;
+    --secondary: #2277D6;
+  }
+  
+  

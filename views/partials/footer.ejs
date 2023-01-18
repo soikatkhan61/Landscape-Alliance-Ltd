@@ -1,0 +1,115 @@
+<!-- Footer -->
+<footer class="text-center text-lg-start text-dark" style="background-color: #fafafa">
+
+  <div style="background:#fafafa">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#5089D4" fill-opacity="1"
+        d="M0,64L80,90.7C160,117,320,171,480,170.7C640,171,800,117,960,106.7C1120,96,1280,128,1360,144L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+      </path>
+    </svg>
+  </div>
+
+  <!-- Section: Links  -->
+  <section style="background-color: #5089D4;color:white">
+    <div class="container footer text-center text-md-start ">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold">landscape allience ltd</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p>
+            Landscape Alliance Limited is a high end real estate and construction company in Bangladesh. We see things
+            holistically, backed by years of experience.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Policy</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p>
+            <a href="/policy/hr-policy" class="text-light">HR Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-light">landscapeallienceltd</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Contact</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p class="location"><i class="fas fa-home mr-3"></i> 75/ 2 Ridgedale Complex, Uttar Badda, Suit 6-B</p>
+          <p class="mail"><i class="fas fa-envelope mr-3"></i> landscapeallienceltdbd@gmail.com</p>
+          <p class="phone"><i class="fas fa-phone mr-3"></i> 01712000384,01712602241</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3 text-light d-md-flex justify-content-evenly" style="background-color: #134D8D">
+    <div>
+      © 2022 Copyright:
+      <a class="text-light" href="/">landscapeallienceltd.com</a>
+    </div>
+
+    <a href="https://www.xtensoft.com" class="text-light link" style="font-size: 14px;">This system is designed by <span
+        style="font-size: 15px;font-weight: bold;">xtensoft.com</span></a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+
+<script>
+  
+  const about_nav = document.getElementById('about_nav')
+  async function get_profile() {
+    
+    fetch('http://localhost:3000/about/get-profiles')
+      .then(res => res.json())
+      .then(data => {
+        for(let d of data.data){
+          about_nav.innerHTML += ` <li>
+                <a class="dropdown-item" href="/about/info/${d.slug}">${d.title}</a>
+              </li>`
+        }
+      })
+  }
+  
+  async function get_company() {
+
+    let location = document.querySelectorAll('.location')
+    let mail = document.querySelectorAll('.mail')
+    let phone = document.querySelectorAll('.phone')
+    
+    fetch('http://localhost:3000/about/get-company')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        for(let i = 0;i<location.length;i++){
+          location[i].innerText = data.info[0].location
+          mail[i].innerText = data.info[0].mail
+          phone[i].innerText = data.info[0].phone
+        }
+        
+      })
+  }
+
+  get_profile()
+  get_company()
+
+</script>

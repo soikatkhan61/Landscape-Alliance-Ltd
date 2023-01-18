@@ -1,0 +1,112 @@
+    <!-- SIDEBAR -->
+    <style>
+    </style>
+    <div class="sidebar" style="background:#10122d;color:#FFF">
+      <div class="sidebar-logo">
+          <h4>Landscape Alliance</h4>
+          <div class="sidebar-close" id="sidebar-close">
+              <i class='bx bx-left-arrow-alt'></i>
+          </div>
+      </div>
+      <div class="sidebar-user">
+          <div class="sidebar-user-info">
+              <img src="/images/user.png" alt="User picture" class="profile-image">
+              <div class="sidebar-user-name">
+                  admin
+              </div>
+          </div>
+          <a  href="/" class="btn_user btn_user-outline" style="border: 2px solid white;">
+            <i class='bx bx-log-out bx-flip-horizontal' style="color: white;"></i>
+        </a>
+      </div>
+      <!-- SIDEBAR MENU -->
+      <ul class="sidebar-menu">
+        <style>
+            .sidebar-menu li a:hover{
+                color:yellow
+            }
+        </style>
+
+        <li>
+            <a href="/admin">
+                <i class='bx bxs-dashboard'></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+
+       
+
+        <li>
+            <a href="/admin/create-post">
+                <i class='bx bx-plus'></i>
+                New Project
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/all-posts">
+                <i class='bx bx-category'></i>
+                All Project
+            </a>
+        </li>
+
+        <li>
+            <a href="/admin/messages">
+                <i class='bx bx-chat'></i>
+                <span>Messages</span>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/about">
+                <i class='bx bxs-brightness'></i>
+                <span>About</span>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/info">
+                <i class='bx bx-info-circle'></i>
+                <span>Company Info Change</span>
+            </a>
+        </li>
+        <li>
+            <a href="/auth/change-password">
+                <i class='bx bx-edit'></i>
+                <span>Change Password</span>
+            </a>
+        </li>
+
+          <li>
+              <a href="/auth/logout">
+                <i class='bx bx-log-out'></i>
+                  <span>Logout</span>
+              </a>
+          </li>
+          <li class="sidebar-submenu">
+              <a href="#" class="sidebar-menu-dropdown">
+                  <i class='bx bx-cog'></i>
+                  <span>settings</span>
+                  <div class="dropdown-icon"></div>
+              </a>
+              <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                  <li>
+                      <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                          darkmode
+                          <span class="darkmode-switch"></span>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+      <!-- END SIDEBAR MENU -->
+  </div>
+  <!-- END SIDEBAR -->   <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+            <div class="main-title text-light">
+                Admin Panel
+            </div>
+        </div>

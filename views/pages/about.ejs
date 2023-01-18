@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/about.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="">
+    
+    <div class="container ct ac">
+
+
+
+        <h1>Landscape Alliance Ltd</h1>
+        <h2>We Are Coming Soon.</h2>
+        <div class="count">
+            <div class="countd">
+                <span id="days">00</span>
+                days
+            </div>
+            <div class="countd">
+                <span id="hours">00</span>
+                hours
+            </div>
+            <div class="countd">
+                <span id="mins">00</span>
+                minutes
+            </div>
+            <div class="countd">
+                <span id="secs">00</span>
+                seconds
+            </div>
+        </div>
+    </div>
+    <script>
+        var count = new Date("aug 9,2022 00:00:00").getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var d = count - now;
+            var days = Math.floor(d / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((d % (1000 * 60)) / 1000);
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("mins").innerHTML = minutes;
+            document.getElementById("secs").innerHTML = seconds;
+        }, 1000);
+    </script>
+</body>
+
+</html>

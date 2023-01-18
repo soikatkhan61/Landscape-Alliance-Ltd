@@ -1,0 +1,181 @@
+<%- include("./partials/header") %> 
+
+    <!-- SIDEBAR -->
+    <%- include("./partials/sidebar") %> 
+    <!-- END SIDEBAR -->
+        <div class="main-content">
+            <div class="row" style="color: white;">
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-hover" style="background-color: #17a2b8!important;" >
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                total project
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    12
+                                </div>
+                               <a href="/admin/create-post" class="btn border border-light text-light" style="background-color: #17a2b8!important;">Add new project</a>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-hover" style="background-color: #007bff!important;">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                New Messages
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    <%= totalMessage.length %> 
+                                </div>
+                                <a href="/admin/messages" class="btn border border-light text-light" style="background-color: #007bff!important;">View new messages</a>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-hover" style="background-color: #28a745!important;">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                        <div class="counter-title">
+                            New Order requests
+                        </div>
+                        <div class="counter-info">
+                            <div class="counter-count">
+                                <%= totalOrder.length %> 
+                            </div>
+                            <a href="/admin/orders?respond=false" class="btn border border-light text-light" style="background-color: #28a745!important;">View Orders requests</a>
+                        </div>
+                    </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-hover" style="background-color: #ffc107!important;">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                daily visitors
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    690
+                                </div>
+                                <i class='bx bx-user'></i>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- ORDERS TABLE -->
+                    <div class="box border border-primary">
+                        <div class="box-header text-primary">
+                            Recent Messages
+                        </div>
+                     <% if(totalMessage.length > 0){ %> 
+                        <div class="box-body overflow-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let m of totalMessage){ %> 
+                                        <tr>
+                                            <td><%= m.id %> </td>
+                                            <td>
+                                                <%= m.name %>
+                                            </td>
+                                            <td> <%= m.email %></td>
+                                            <td>
+                                               <%= moment(m.createdAt) %> 
+                                            </td>
+                                            <td>
+                                               <a href="/admin/messages/<%= m.id %> " class="btn btn-sm btn-primary">view message</a>
+                                            </td>
+                                        </tr>
+                                    <% } %> 
+                                
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <% }else{%> 
+                            <h6>No Messages</h6>
+                         <% }%> 
+                    </div>
+                    <!-- END ORDERS TABLE -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- ORDERS TABLE -->
+                    <div class="box  border border-success">
+                        <div class="box-header text-success">
+                            Recent Orders
+                        </div>
+                     <% if(totalOrder.length > 0){ %> 
+                        <div class="box-body overflow-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Project Name</th>
+                                        <th>Area</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let m of totalOrder) {%> 
+                                        <tr>
+                                            <td class="px-3"><%= m.id %> </td>
+                                            <td><%= m.name%> </td>
+                                            <td><%= m.email %> </td>
+                                            <td> <a href="tel:<%= m.phone %>"><%= m.phone %></a> </td>
+                                            <td><%= m.project_name %> </td>
+                                            <td><%= m.area ? m.area : '---' %> </td>
+                                            <td><%= moment(m.createdAt) %> </td>                        
+                                          </tr>
+                                      <% }%> 
+                                
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                     <% }else{%> 
+                        <h6>No orders</h6>
+                     <% }%> 
+                       
+                    </div>
+                    <!-- END ORDERS TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+
+    <div class="overlay"></div>
+
+
+<%- include("./partials/footer") %> 

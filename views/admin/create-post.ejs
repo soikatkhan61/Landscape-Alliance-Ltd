@@ -1,0 +1,218 @@
+<%- include("./partials/header") %> 
+
+<%- include("./partials/sidebar") %> 
+
+<div class="container">
+      <div class="row d-flex mb-5" style="flex-direction: column;">
+
+        <form method="post" action="/admin/create-post<%= project ? '?edit=true&id='+project.id : '' %>" enctype="multipart/form-data">
+
+          <div class="my-3 py-2 sticky-top d-flex  justify-content-between align-items-center" style="border-left: 10px solid #2584EE;background-color:rgba(144,192,246,0.2)">
+            <h6 class="text-center mb-0 mx-2">Create Project</h6>
+            <div>
+              <% if(project){ %> 
+                <a  href="/project/<%= project.slug %>" target="_blank"  class="btn btn-success"><i class='bx bx-show mx-1'></i> <span>view</span></a>
+              <% } %> 
+              
+              <button type="submit" class="btn btn-<%= project ? "warning": "primary" %>" style="min-width: 150px;"><%= project? "Update": "Publish" %> </button>
+            </div>
+           
+          </div>
+
+          <label for="title">Post Title</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class='bx bxs-captions'></i></div>
+            </div>
+            <input required maxlength="250" type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp"
+              placeholder="( Max lenght 250 character )" value="<%= project ? project.title : '' %>"  >
+          </div>
+          <div class="mb-2">
+            <script>
+                function update() {
+                    var d = document.getElementById('country');
+                    var dText = d.options[d.selectedIndex].text;
+                    document.getElementById('result').value = dText
+                }
+            </script>
+            <select id="country" class="py-2 px-4 mb-3" onchange="update();"
+                style="width: 100%; outline: black">
+                <option class="py-2 px-5">Project Status</option>
+                <option class="py-2 px-5" value="Ongoing" <%= project && project.status == 'Ongoing' ? 'selected' : '' %> >Ongoing</option>
+                <option class="py-2 px-5" value="Completed" <%= project &&  project.status == 'Completed' ? 'selected' : '' %>>Completed</option>
+                <option class="py-2 px-5" value="Upcoming" <%= project &&  project.status == 'Upcoming' ? 'selected' : '' %>>Upcoming</option>
+            </select>
+            <input id="result" name="status" value="<%= project &&  project.status? project.status : '' %>" class="d-none" >
+
+        </div>
+          <div class="mb-3">
+            <textarea id="summernote" name="description"><%= project ? project.description : '' %> </textarea>
+          </div>
+
+
+          <div class="form-group">
+            <label for="thumbnail">Project Thumbnail</label>
+            <input <% project? '' : 'thumbnail' %>  id="thumbnail" class="form-control" type="file" name="thumbnail">
+            <% if(project && project.thumbnail){ %>
+              <div class="card">
+                <img style="width:200px; height: 200px;" class="card-img-top" src="/upload/projects/<%= project.thumbnail %>"  alt="Card image cap">
+              </div>`
+            <% } %> 
+          </div>
+          
+
+            <label for="google_map">Google Map</label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class='bx bxs-map text-success'></i></div>
+              </div>
+            <input maxlength="1000" type="text" class="form-control" id="google_map" name="google_map" aria-describedby="emailHelp"
+              placeholder="Google map link" value="<%= project ? project.google_map : '' %>"  >
+          </div>
+         
+          <div class="mt-2">
+              <label for="youtube_video">Youtube Video Link</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class='bx bxl-youtube text-danger' ></i></div>
+                </div>
+              <input maxlength="1000" type="text" class="form-control" id="youtube_video" name="youtube_video" aria-describedby="emailHelp"
+                placeholder="Youtube video link" value="<%= project ? project.youtube_video : '' %>"  >
+            </div>
+         </div>
+        
+        <div class="mt-5 py-1" style="border-left: 10px solid #08a74a;border-right: 10px solid #08a74a;;background-color:rgba(20, 228, 141, 0.4)">
+          <h3 class="text-center">Projects Details</h3>
+          <p class="text-center mb-0">(Max length 50 charecter)</p>
+        </div>
+        <!--Multi row starts here-->
+        <div class="form-row my-2 mt-5">
+          <div class="form-group col-md-6">
+            <label for="address">Address</label>
+            <input maxlength="50" type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp" placeholder="Make it shorter"
+              value="<%= project ? project.address : '' %>"  required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="apartment_size">Apartment Size</label>
+            <input maxlength="50" type="text" class="form-control" id="apartment_size" name="apartment_size" aria-describedby="emailHelp"
+              value="<%= project ? project.apartment_size : '' %>"  >
+          </div>
+        </div>
+        
+        <div class="form-row my-2">
+          <div class="form-group col-md-6">
+            <label for="road_size">Road Size</label>
+            <input maxlength="50" type="text" class="form-control" id="road_size" name="road_size" aria-describedby="emailHelp"
+              value="<%= project ? project.road_size : '' %>"  >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="parking">Parking</label>
+            <input maxlength="50" type="text" class="form-control" id="parking" name="parking" aria-describedby="emailHelp"
+               value="<%= project ? project.parking : '' %>"  >
+          </div>
+        </div>
+
+
+        <div class="form-row my-2">
+          <div class="form-group col-md-6">
+            <label for="land_size">Land Size</label>
+            <input maxlength="50" type="text" class="form-control" id="land_size" name="land_size" aria-describedby="emailHelp"
+            value="<%= project ? project.land_size : '' %>"  >
+          </div>
+          
+          <div class="form-group col-md-6">
+            <label for="units">Units</label>
+            <input maxlength="50" type="text" class="form-control" id="units" name="units" aria-describedby="emailHelp"
+            value="<%= project ? project.units : '' %>"  >
+          </div>
+        </div>
+
+        <div class="form-row my-2">
+          <div class="form-group col-md-6">
+            <label for="floors">Floors</label>
+            <input maxlength="50" type="text" class="form-control" id="floors" name="floors" aria-describedby="emailHelp"
+             value="<%= project ? project.floors : '' %>"  >
+          </div>
+          
+          
+          <div class="form-group col-md-6">
+            <label for="handover_time">Handover Time</label>
+            <input maxlength="50" type="text" class="form-control" id="handover_time" name="handover_time" aria-describedby="emailHelp"
+             value="<%= project ? project.handover_time : '' %>"  >
+          </div>
+        </div>
+
+          
+        
+        
+         
+         
+        
+
+          <div class="form-group">
+            <label for="project-images">Project Images</label>
+            <input id="project-images" type="file" class="form-control" name="project-images" multiple>
+
+            <div id="gallery-preview" class="card-deck mt-3" style="display: flex;">
+              <% if(project){ %>
+                <div class="row">
+                  <% projectImages.forEach(img => { %>
+                    <div class="col-2">
+                      <div class="card">
+                        <img style="height: 200px;" class="card-img-top" src="/upload/projects/<%= img %>"  alt="Card image cap">
+    
+                        <a href="/project/delete-img?post=<%= project.id %> &src=<%= img %>" class="btn mt-2 rounded-0" style="background-color: rgb(232, 44, 44);color:white" >Delete</a>
+                      </div>
+                    </div>
+                  <% }) %> 
+                </div>
+                
+              <% } %> 
+            </div>
+          </div>
+
+       
+          <input type="submit" value=<%= project? "Update": "Publish" %> class="form-control btn-<%= project ? "warning": "primary" %>" />
+
+        </form>
+</div>
+</div>
+
+
+<script>
+  const projectImagesInput = document.getElementById('project-images');
+  const gelleryPreview = document.getElementById('gallery-preview');
+
+  projectImagesInput.addEventListener('change', async (e)=>{
+    
+    const files = e.target.files;
+    console.log(files)
+
+    let src = '';
+    let cardElements = '';
+    for(file of files){
+      src = URL.createObjectURL(file);
+      cardElements = ` <div class="card">
+              <img style="height: 200px;" class="card-img-top" src="${src}" alt="Card image cap">
+             
+            </div>`
+
+      gelleryPreview.innerHTML += cardElements;
+      gelleryPreview.onload = function(){
+        URL.revokeObjectURL(src);
+      }
+    }
+  })
+
+</script>
+
+
+<%- include("./partials/footer") %>
+
+<script>
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      height: 400
+    });
+  });
+</script>
